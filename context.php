@@ -1,7 +1,9 @@
 <?php
+
+include "base.php";
  
-$url = 'https://api.stackexchange.com/2.1/posts/1337/comments';
-$data = array("site" => "physics", "filter" => "!SrhZo6aE2O(w*j4-4i");
+$url = 'https://api.stackexchange.com/2.1/posts/' . $_POST["id"] . '/comments';
+$data = array("site" => $_SESSION["Site"], "filter" => "!SrhZo6aE2O(w*j4-4i");
  
 $response = (new Curl)->exec($url . '?' . http_build_query($data), [CURLOPT_ENCODING => 'gzip']);
  

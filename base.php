@@ -91,8 +91,8 @@
 	
 	$dbhost = "localhost"; // this will ususally be 'localhost', but can sometimes differ  
 	$dbname = "comments"; // the name of the database that you are going to use for this project  
-	$dbuser = "physics"; // the username that you created, or were given, to access your database  
-	$dbpass = "y4k]6PgxH"; // the password that you created, or were given, to access your database  
+	$dbuser = "user"; // the username that you created, or were given, to access your database  
+	$dbpass = "pass"; // the password that you created, or were given, to access your database  
   
 	mysql_connect($dbhost, $dbuser, $dbpass) or die("MySQL Error: " . mysql_error());  
 	mysql_select_db($dbname) or die("MySQL Error: " . mysql_error()); 

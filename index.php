@@ -88,7 +88,7 @@
     <div class="col-md-offset-1 col-md-10">
       <table class="table">
         <?php
-          $query = mysql_query("SELECT `Text`, `UserID`, `Id`, `CreationDate` FROM " . $_SESSION["Site"] . " WHERE handled=0 ORDER BY LENGTH(`Text`) LIMIT 0,25");
+          $query = mysql_query("SELECT `Text`, `UserID`, `Id`, `PostId`, `CreationDate` FROM " . $_SESSION["Site"] . " WHERE handled=0 ORDER BY LENGTH(`Text`) LIMIT 0,25");
           while ($row = mysql_fetch_array($query))
           {
             echo "<tr id='" . $row['Id'] . "'><td>";
@@ -96,11 +96,8 @@
             echo "<div class='comment'>";
             echo "<a href='http://" . $_SESSION['RootURL'] . "/posts/comments/" . $row["Id"] . "' target='_newtab'><h4 class='comment-text " . $row["Id"] . "'>" . $row["Text"] . " </a><span class='small'> - <strong>user" . $row["UserID"] ."</strong> " . TimeElapsed($row["CreationDate"]) . " </span></h4>";
             echo "</div>";
-            if ($_SESSION["IsDev"] == 1) 
-            {
-              echo "</br>";
-              echo "<p class='showcontextlink text-danger' href='#' id='" . $row["Id"] . "'> show context</p></br>";
-            }
+            echo "</br>";
+            echo "<p class='showcontextlink text-info' href='#' id='" . $row["Id"] . "' postid='" . $row["PostId"] . "'> show context</p></br>";
             echo "<div class='actions " . $row["Id"] . "'>";
             echo "<div class='btn btn-success' id='" . $row["Id"] . "'><strong>valid</strong></div>";
             echo "<div class='btn btn-danger' id='" . $row["Id"] . "' style='margin-left:10px'><strong>invalid</strong></div>";
