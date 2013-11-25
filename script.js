@@ -100,13 +100,18 @@ $(document).ready(function() {
 				{
 					astring = astring + obj.items[i].owner.display_name;
 
-					table = table.concat("<tr><td>", obj.items[i].body, "<span class='text-muted'> - <a href='" + obj.items[i].owner.link + "'>", obj.items[i].owner.display_name, "</a></td></tr>"); //"<tr>" + obj.items[i].body + "<span class='text-muted'>" + obj.items[i].owner.display_name + "</tr>";
+					var contextClass = "";
+
+					if (obj.items[i].comment_id == commentId)
+					{
+						contextClass = "warning";
+					}
+
+					table = table.concat("<tr class='" + contextClass + "''><td>", obj.items[i].body, "<span class='text-muted'> - <a href='" + obj.items[i].owner.link + "'>", obj.items[i].owner.display_name, "</a></td></tr>"); //"<tr>" + obj.items[i].body + "<span class='text-muted'>" + obj.items[i].owner.display_name + "</tr>";
 				}
 				table = table + "</table>";
-				console.log(table);
 				contextLink.before(table);
 				contextLink.remove();
-				console.log(astring);
 			},
 		});
 	});
