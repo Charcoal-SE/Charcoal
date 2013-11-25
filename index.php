@@ -239,8 +239,8 @@ else
       </div>
     </div>
 
-    <p class="text-muted" style="font-size:20px; text-align:center">Ready to join us? Great!</p>
-    <div class="text-center"><a href="/charcoal/signup.php"><button class="btn btn-primary btn-lg" style="margin:auto"><strong>Start helping!</strong></button></a></div>
+    <!-- <p class="text-muted" style="font-size:20px; text-align:center">Ready to join us? Great!</p> -->
+    <!-- <div class="text-center"><a href="/charcoal/signup.php"><button class="btn btn-primary btn-lg" style="margin:auto"><strong>Start helping!</strong></button></a></div> -->
     <?php
 }  
 ?>  
