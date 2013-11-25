@@ -1,4 +1,6 @@
 <?php
+	include "creds.php";
+
 	function TimeElapsed($datetime, $full = false) {
     $now = new DateTime;
     $ago = new DateTime($datetime);
@@ -89,10 +91,10 @@
 	}
 	session_start();
 	
-	$dbhost = "localhost"; // this will ususally be 'localhost', but can sometimes differ  
-	$dbname = "comments"; // the name of the database that you are going to use for this project  
-	$dbuser = "user"; // the username that you created, or were given, to access your database  
-	$dbpass = "pass"; // the password that you created, or were given, to access your database  
+	$dbhost = MySQLHost(); // this will ususally be 'localhost', but can sometimes differ  
+	$dbname = MySQLDB(); // the name of the database that you are going to use for this project  
+	$dbuser = MySQLUsername(); // the username that you created, or were given, to access your database  
+	$dbpass = MySQLPassword(); // the password that you created, or were given, to access your database  
   
 	mysql_connect($dbhost, $dbuser, $dbpass) or die("MySQL Error: " . mysql_error());  
 	mysql_select_db($dbname) or die("MySQL Error: " . mysql_error()); 
