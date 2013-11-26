@@ -88,13 +88,13 @@
     <div class="col-md-offset-1 col-md-10">
       <table class="table">
         <?php
-          $query = mysql_query("SELECT `Text`, `UserID`, `Id`, `PostId`, `CreationDate` FROM " . $_SESSION["Site"] . " WHERE handled=0 ORDER BY LENGTH(`Text`) LIMIT 0,25");
+          $query = mysql_query("SELECT `Text`, `UserID`, `Id`, `PostId`, `CreationDate`, `reason` FROM " . $_SESSION["Site"] . " WHERE handled=0 ORDER BY LENGTH(`Text`) LIMIT 0,25");
           while ($row = mysql_fetch_array($query))
           {
             echo "<tr id='" . $row['Id'] . "'><td>";
 
             echo "<div class='comment'>";
-            echo "<a href='http://" . $_SESSION['RootURL'] . "/posts/comments/" . $row["Id"] . "' target='_newtab'><h4 class='comment-text " . $row["Id"] . "'>" . $row["Text"] . " </a><span class='small'> - <strong>user" . $row["UserID"] ."</strong> " . TimeElapsed($row["CreationDate"]) . " </span></h4>";
+            echo "<a href='http://" . $_SESSION['RootURL'] . "/posts/comments/" . $row["Id"] . "' target='_newtab'><h4 class='comment-text " . $row["Id"] . "'>" . $row["Text"] . " </a><span class='small'> - <strong>user" . $row["UserID"] ."</strong> " . TimeElapsed($row["CreationDate"]) . " <span class='text-danger'>(" . $row["reason"] . ")</span></span></h4>";
             echo "</div>";
             echo "</br>";
             echo "<p class='showcontextlink text-info' href='#' id='" . $row["Id"] . "' postid='" . $row["PostId"] . "'> show context</p></br>";
