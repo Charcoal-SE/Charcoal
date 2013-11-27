@@ -1,7 +1,7 @@
 <?php
-	include "creds.php";
+    include "creds.php";
 
-	function TimeElapsed($datetime, $full = false) {
+    function TimeElapsed($datetime, $full = false) {
     $now = new DateTime;
     $ago = new DateTime($datetime);
     $diff = $now->diff($ago);
@@ -39,7 +39,7 @@
 			{
 				$active = " class='active'";
 			}
-        	$items = $items . "<li" . $active . "><a href='http://www.erwaysoftware.com/charcoal/index.php?site=" . $row["siteTableName"] . "'>" . $row["siteName"] . " <strong>" . FlagsForSite($row["siteTableName"]) . "</strong></a></li>"; 
+        	$items = $items . "<li" . $active . "><a href='/charcoal/index.php?site=" . $row["siteTableName"] . "'>" . $row["siteName"] . " <strong>" . FlagsForSite($row["siteTableName"]) . "</strong></a></li>"; 
         }
 
 		// if ($currentPage == "stackoverflow")
@@ -61,7 +61,7 @@
 		          <span class='icon-bar'></span>
 		          <span class='icon-bar'></span>
 		        </button>
-		        <a class='navbar-brand' href='#'>Charcoal <small class='text-info'>alpha</small></a>
+		        <a class='navbar-brand' href='/charcoal'>Charcoal <small class='text-info'>alpha</small></a>
 		      </div>
 
 		      <!-- Collect the nav links, forms, and other content for toggling -->

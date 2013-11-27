@@ -137,7 +137,7 @@ elseif(!empty($_POST['username']) && !empty($_POST['password']))
      $success = 0;
     }  
     
-    if ($success == 1) echo "<script>this.document.location.href = 'http://www.erwaysoftware.com/charcoal/index.php?loginsuccess=1'</script>";
+    if ($success == 1) echo "<script>this.document.location.href = '/charcoal/index.php?loginsuccess=1'</script>";
     else echo '<script>this.document.location.reload(true);</script>'; 
 }  
 else  
