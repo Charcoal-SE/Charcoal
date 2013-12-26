@@ -30,6 +30,14 @@
   ?>
   <?php echo NavBar($_SESSION["Site"]); ?>
   <p style="text-align:right; margin-top:5px; margin-right:15px; font-size:14px;"><strong><?php echo $_SESSION["Username"]; ?></strong> <!-- | <button class='btn btn-warning switchbutton btn-sm'>switch sites</button> | -->|  <a href="logout.php">logout</a></p>
+  <?php if ($_SESSION["IsDev"]==1)
+  {?>
+  <select>
+    <option value="all">All</option>
+    <option value="obsolete">Obsolete</option>
+    <option value="please-accept">Please-Accept</option>
+  </select>
+  <?php } ?>
     <!-- <div class="page-header">
         <h1 class="col-md-offset-1"><?php echo $_SESSION["Site"]; ?> Obsolete Comment Queue:  <span class="label label-warning">
 
@@ -89,6 +97,10 @@
       <table class="table">
         <?php
           $query = mysql_query("SELECT `Text`, `UserID`, `Id`, `PostId`, `CreationDate`, `reason` FROM " . $_SESSION["Site"] . " WHERE handled=0 ORDER BY LENGTH(`Text`) LIMIT 0,25");
+          if ($_SESSION["IsDev"] == 1)
+          {
+            $query = mysql_query("SELECT `Text`, `UserID`, `Id`, `PostId`, `CreationDate`, `reason` FROM " . $_SESSION["Site"] . " WHERE handled=0 AND reason='please-accept' AND UserId=2554605 ORDER BY LENGTH(`Text`) LIMIT 0,25");
+          }
           while ($row = mysql_fetch_array($query))
           {
             echo "<tr id='" . $row['Id'] . "'><td>";
