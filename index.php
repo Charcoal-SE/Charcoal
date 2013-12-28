@@ -129,11 +129,11 @@
 	<div class="col-md-1">
 		<button class="form-control btn btn-default" id="posts-flag-clr">Clear</button>
 	</div>
+
+</div>
 	<br>
 	<button type="button" class="btn btn-default btn-xs modtoggle">I am a moderator on this site</button>
-</div>
 
-	<br><br>
 </div>
 <br><br>
 
