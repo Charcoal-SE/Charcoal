@@ -1,5 +1,5 @@
 <?php
-    include "creds.php";
+    include "config.php";
 
     function TimeElapsed($datetime, $full = false) {
     $now = new DateTime;
@@ -39,7 +39,7 @@
 			{
 				$active = " class='active'";
 			}
-        	$items = $items . "<li" . $active . "><a href='/charcoal/index.php?site=" . $row["siteTableName"] . "'>" . $row["siteName"] . " <strong>" . FlagsForSite($row["siteTableName"]) . "</strong></a></li>"; 
+        	$items = $items . "<li" . $active . "><a href=" . baseURL() . "'/index.php?site=" . $row["siteTableName"] . "'>" . $row["siteName"] . " <strong>" . FlagsForSite($row["siteTableName"]) . "</strong></a></li>"; 
         }
 
 		// if ($currentPage == "stackoverflow")
@@ -61,7 +61,7 @@
 		          <span class='icon-bar'></span>
 		          <span class='icon-bar'></span>
 		        </button>
-		        <a class='navbar-brand' href='/charcoal'>Charcoal <small class='text-info'>alpha</small></a>
+		        <a class='navbar-brand' href='" . baseURL() . "'>Charcoal <small class='text-info'>alpha</small></a>
 		      </div>
 
 		      <!-- Collect the nav links, forms, and other content for toggling -->
