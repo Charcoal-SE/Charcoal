@@ -10,7 +10,7 @@ commentCollector.updateCommentCollector=function(){
 	}
 	$('#badge-posts').html(emptyIfZero(commentCollector.postIds.length));
 	$('#badge-comments').html(emptyIfZero(commentCollector.commentIds.length));
-	if($('#commentcollector-enable').hasClass('active')){
+	if($('#collecttoggle').hasClass('active')){
 		$('.commentcollector-showhide').show();
 	}else{
 		$('.commentcollector-showhide').hide();
