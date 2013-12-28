@@ -94,6 +94,46 @@
     </p>
     </div> -->
     <div class="col-md-offset-1 col-md-10">
+    
+    <div class="commentcollector-options">
+<button class="btn btn-default togglebtn active" id="commentcollector-enable">Collect comment/post IDs for flagging</button>  <div class="commentcollector-showhide" style="display: block;">
+<br><br>
+<div class="row">
+	<div class="col-md-3">Individual comments <span class="badge" id="badge-comments">0</span></div>
+	<div class="col-md-4"><div class="input-group">
+		<span class="input-group-addon">Flag as</span>
+		<select class="form-control" id="flag-dropdown">
+			<option value=22 selected>obsolete</option>
+			<option value=21>not constructive</option>
+			<option value=23>chatty</option>
+			<option value=20>rude</option>
+		</select>
+	</div></div>
+	<div class="col-md-2">
+		<button class="form-control btn btn-default" id="comments-flag-gen">Generate</button>
+	</div>
+	<div class="col-md-1">
+		<button class="form-control btn btn-default" id="comments-flag-clr">Clear</button>
+	</div>
+	</div><br>
+<div class="row">
+	<div class="col-md-3">Whole posts (custom flag) <span class="badge" id="badge-posts">0</span></div>
+	<div class="col-md-4"><div class="input-group">
+		<span class="input-group-addon">Flag as</span>
+		<input class="form-control" type="text" placeholder="Flag text here" id="post-flag-text" value="This post has obsolete comments">
+	</div></div>
+	<div class="col-md-2">
+		<button class="form-control btn btn-default" id="posts-flag-gen">Generate</button>
+	</div>
+	<div class="col-md-1">
+		<button class="form-control btn btn-default" id="posts-flag-clr">Clear</button>
+	</div>
+</div>
+</div>
+<!-- Not yet enabled, need to write AJAX <label for="checkbox-mod">I am a moderator on this site&nbsp; &nbsp; </label> <input type="checkbox" name="checkbox-mod" id="checkbox-mod"><br> -->
+
+
+</div>
       <table class="table main-table">
         <?php
           $query = mysql_query("SELECT `Text`, `UserID`, `Id`, `PostId`, `CreationDate`, `reason` FROM " . $_SESSION["Site"] . " WHERE handled=0 ORDER BY LENGTH(`Text`) LIMIT 0,25");
