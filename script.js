@@ -35,7 +35,7 @@ POSTFlag()
 
 commentCollector.postTemplate=function(){
 var taskList=[POST_IDS_HERE];
-var flagoption=FLAG_TEXT_HERE;
+var flagoption="FLAG_TEXT_HERE";
 var originallength=taskList.length;
 POSTFlag=function (){
 if(taskList.length>0){
