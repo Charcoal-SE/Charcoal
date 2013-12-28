@@ -104,7 +104,7 @@ $(document).ready(function() {
 		var argString = "id=" + commentId;
 		$.ajax({
 			type: "POST",
-			url: "/charcoal/submitInvalid.php",
+			url: baseURL+"/submitInvalid.php",
 			data: argString,
 			success: function(data)
 			{
@@ -125,7 +125,7 @@ $(document).ready(function() {
 		var argString = "id=" + commentId;
 		$.ajax({
 			type: "POST",
-			url: "/charcoal/switchsite.php",
+			url: baseURL+"/switchsite.php",
 			data: argString,
 			success: function(data)
 			{
@@ -148,7 +148,7 @@ $(document).ready(function() {
 		var argString = "id=" + postId;
 		$.ajax({
 			type: "POST",
-			url: "/charcoal/context.php",
+			url: baseURL+"/context.php",
 			data: argString,
 			success: function(data)
 			{
