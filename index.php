@@ -103,7 +103,7 @@
           }
           while ($row = mysql_fetch_array($query))
           {
-            echo "<tr id='" . $row['Id'] . "'><td>";
+            echo "<tr class='comment-row' id='" . $row['Id'] . "'><td>";
 
             echo "<div class='comment'>";
             echo "<a href='http://" . $_SESSION['RootURL'] . "/posts/comments/" . $row["Id"] . "' target='_newtab'><h4 class='comment-text " . $row["Id"] . "'>" . $row["Text"] . " </a><span class='small'> - <strong>user" . $row["UserID"] ."</strong> " . TimeElapsed($row["CreationDate"]) . " <span class='text-danger'>(" . $row["reason"] . ")</span></span></h4>";
