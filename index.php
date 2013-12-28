@@ -131,9 +131,9 @@
 	</div>
 	<br>
 	<button type="button" class="btn btn-default btn-xs modtoggle">I am a moderator on this site</button>
-	<br><br>
 </div>
 
+	<br><br>
 </div>
 <br><br>
 
