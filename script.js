@@ -1,5 +1,9 @@
+var commentCollector={};
+commentCollector.enabled=true;
+commentCollector.postIds=[];
+commentCollector.commentIds=[];
 $(document).ready(function() {
-	$('div .btn-success').click(function()
+	$('div .btn-success.valid-button').click(function()
 	{
 		$(this).html('<strong>working...</strong');
 
@@ -7,6 +11,7 @@ $(document).ready(function() {
 		var tableRow = "tr#" + commentId.toString();
 		// alert(tableRow);
 		var argString = "id=" + commentId;
+
 		$.ajax({
 			type: "POST",
 			url: "submitValid.php",
@@ -22,8 +27,17 @@ $(document).ready(function() {
 				}
 			},
 		});
+		var checkboxen=$(this).parents('tr.comment-row').find('.comment-context input[type=checkbox]')
+		if(checkboxen.length==checkboxen.filter(':checked').length){
+			commentCollector.postIds.push('Postid: '+$(this).attr("id"));
+			console.log("Collected post ids: "+commentCollector.postIds)
+		}else{
+			var ret=checkboxen.filter(':checked').map(function(){return $(this).data("commentid")});
+			commentCollector.commentIds.concat([].slice.call(ret));
+			console.log("Collected comment ids: "+commentCollector.commentIds)
+		}
 	});
-	$('div .btn-danger').click(function()
+	$('div .btn-danger.invalid-button').click(function()
 	{
 		$(this).html('<strong>working...</strong');
 
@@ -96,6 +110,9 @@ $(document).ready(function() {
 				// console.log(obj.items.length);
 				var astring = "";
 				var table = "<table class='table table-striped comment-context'>";
+		
+				table="<div class='btn-group commentcollector-buttons commentcollector-showhide'><button type='button' class='btn btn-default context-selectall'>All</button><button type='button' class='btn btn-default context-selectnone'>None</button></div><br>"
+					+table;
 				for (var i=0; i<obj.items.length; i++)
 				{
 					astring = astring + obj.items[i].owner.display_name;
@@ -106,8 +123,8 @@ $(document).ready(function() {
 					{
 						contextClass = "warning";
 					}
-
-					table = table.concat("<tr class='" + contextClass + "'><td data-commentid='"+obj.items[i].comment_id+"'>", obj.items[i].body, "<span class='text-muted'> - <a href='" + obj.items[i].owner.link + "'>", obj.items[i].owner.display_name, "</a></td></tr>"); //"<tr>" + obj.items[i].body + "<span class='text-muted'>" + obj.items[i].owner.display_name + "</tr>";
+					
+					table = table.concat("<tr class='" + contextClass + "'><td class='commentcollector-check commentcollector-showhide'><input type=checkbox data-commentid='"+obj.items[i].comment_id+"'></td><td data-commentid='"+obj.items[i].comment_id+"'>", obj.items[i].body, "<span class='text-muted'> - <a href='" + obj.items[i].owner.link + "'>", obj.items[i].owner.display_name, "</a></td></tr>"); //"<tr>" + obj.items[i].body + "<span class='text-muted'>" + obj.items[i].owner.display_name + "</tr>";
 				}
 				table = table + "</table>";
 				contextLink.before(table);
@@ -115,4 +132,12 @@ $(document).ready(function() {
 			},
 		});
 	});
+	
+	//Select all/none buttons for commentcollector
+	$('tr.comment-row').on("click",".context-selectnone",function(){
+		$(this).parents('tr.comment-row').find('.comment-context input').prop('checked',false)
+	})
+	$('tr.comment-row').on("click",".context-selectall",function(){
+		$(this).parents('tr.comment-row').find('.comment-context input').prop('checked',true)
+	})
 });
