@@ -97,8 +97,26 @@
     <div class="col-md-offset-1 col-md-10">
     
     <div class="commentcollector-options">
-<button class="btn btn-default togglebtn  active" id='collecttoggle' id="commentcollector-enable">Collect comment/post IDs for flagging</button>  <div class="commentcollector-showhide" style="display: block;">
-<i class="icon-info-sign" data-toggle="tooltip" title="Collect comments and generate code to batch-flag. " id='commentcollector-tooltip'></i><br><br>
+<div class=input-group>
+	<button class="btn btn-default togglebtn  active" id='collecttoggle' id="commentcollector-enable">Collect comment/post IDs for flagging</button>  <div class="commentcollector-showhide" style="display: block;">
+	<button class="btn btn-default" id="collecthelp" data-toggle="modal" data-target="collectmodal">?</button>
+	
+	<div id="collectmodal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	<h3 id="myModalLabel">Comment collection system</h3>
+	</div>
+	<div class="modal-body">
+	<p>This system lets the user keep track of comments that have been marked as valid, and gives the user easier ways to flag them in batch
+	When enabled, any comments you mark as valid will be recorded. Also, if you load the context of a comment, you are given the option to record additional comments from the context.
+	</p><p>
+	At any point, you can decide to generate JS code for  flagging these comments. This is simply done by clicking the first "generate" button (after selecting the relevant flag type), copy pasting the javascript code that you are presented, and running it in the JS console on the relevant Stack Exchange site
+	Be sure to wait for the flags to be sent (There will be regular updates in the console as flags are sent out) as the script is throttled and flags once every 5 seconds. Once done, you can clear the record of comments with the "clear" button</p>
+	<p>If you select <i>all</i> comments in the context, the post id will be recorded instead, for custom flagging. The procedure is similar to that of the individual comment flags. </p>
+	</div>
+	</div>
+	</div>
+<br><br>
 <div class="row">
 	<div class="col-md-3">Individual comments <span class="badge" <span class="badge" style="background-color:#5cb85c;" id="badge-comments"></span></div>
 	<div class="col-md-4"><div class="input-group">
