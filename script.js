@@ -5,8 +5,12 @@ commentCollector.commentIds=[];
 
 
 commentCollector.updateCommentCollector=function(){
-	$('#badge-posts').html(commentCollector.postIds.length);
-	$('#badge-comments').html(commentCollector.commentIds.length);
+	function emptyIfZero(num){
+		return ((0==num)?"":num);
+	}	
+	}
+	$('#badge-posts').html(emptyIfZero(commentCollector.postIds.length));
+	$('#badge-comments').html(emptyIfZero(commentCollector.commentIds.length));
 	if($('#commentcollector-enable').hasClass('active')){
 		$('.commentcollector-showhide').show();
 	}else{
