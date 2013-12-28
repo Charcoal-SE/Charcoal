@@ -155,7 +155,7 @@
             echo "</br>";
             echo "<p class='showcontextlink text-info' href='#' id='" . $row["Id"] . "' postid='" . $row["PostId"] . "'> show context</p></br>";
             echo "<div class='actions " . $row["Id"] . "'>";
-            echo "<div class='btn btn-success valid-button' id='" . $row["Id"] . "'><strong>valid</strong></div>";
+            echo "<div class='btn btn-success valid-button' id='" . $row["Id"] . "' data-postid='".$row["PostId"]."'  ><strong>valid</strong></div>";
             echo "<div class='btn btn-danger invalid-button' id='" . $row["Id"] . "' data-postid='".$row["PostId"]."' style='margin-left:10px'><strong>invalid</strong></div>";
             echo "</div>";
 
