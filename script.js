@@ -95,7 +95,7 @@ $(document).ready(function() {
 				// alert(astring);
 				// console.log(obj.items.length);
 				var astring = "";
-				var table = "<table class='table table-striped'>";
+				var table = "<table class='table table-striped comment-context'>";
 				for (var i=0; i<obj.items.length; i++)
 				{
 					astring = astring + obj.items[i].owner.display_name;
@@ -107,7 +107,7 @@ $(document).ready(function() {
 						contextClass = "warning";
 					}
 
-					table = table.concat("<tr class='" + contextClass + "''><td>", obj.items[i].body, "<span class='text-muted'> - <a href='" + obj.items[i].owner.link + "'>", obj.items[i].owner.display_name, "</a></td></tr>"); //"<tr>" + obj.items[i].body + "<span class='text-muted'>" + obj.items[i].owner.display_name + "</tr>";
+					table = table.concat("<tr class='" + contextClass + "'><td data-commentid='"+obj.items[i].commment_context+"'>", obj.items[i].body, "<span class='text-muted'> - <a href='" + obj.items[i].owner.link + "'>", obj.items[i].owner.display_name, "</a></td></tr>"); //"<tr>" + obj.items[i].body + "<span class='text-muted'>" + obj.items[i].owner.display_name + "</tr>";
 				}
 				table = table + "</table>";
 				contextLink.before(table);
