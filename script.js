@@ -2,6 +2,60 @@ var commentCollector={};
 commentCollector.enabled=true;
 commentCollector.postIds=[];
 commentCollector.commentIds=[];
+
+
+commentCollector.updateCommentCollector=function(){
+	$('#badge-posts').html(commentCollector.postIds.length);
+	$('#badge-comments').html(commentCollector.commentIds.length);
+	if($('#commentcollector-enable').hasClass('active')){
+		$('.commentcollector-showhide').show();
+	}else{
+		$('.commentcollector-showhide').hide();
+	}
+}
+
+
+commentCollector.commentTemplate=function(){
+var taskList=[COMMENT_IDS_HERE];
+var flagoption=FLAG_METHOD_HERE;
+var originallength=taskList.length;
+POSTFlag=function (){
+if(taskList.length>0){
+	console.log("Flagging comment #"+(originallength - taskList.length+1) +" of "+  originallength)
+	$.post("/flags/comments/"+taskList.shift()+"/add/"+flagoption,
+		JSON.parse('{"fkey":"'+StackExchange.options.user.fkey+'","otherText":""}'),
+		function(){console.log('(done)');setTimeout(POSTFlag,5100);}
+	);
+}else{
+	console.log("Finished");
+}
+}
+}
+
+commentCollector.postTemplate=function(){
+var taskList=[POST_IDS_HERE];
+var flagoption=FLAG_TEXT_HERE;
+var originallength=taskList.length;
+POSTFlag=function (){
+if(taskList.length>0){
+	console.log("Flagging comment #"+(originallength - taskList.length+1) +" of "+  originallength)
+	$.post("/flags/posts/"+taskList.shift()+"/flags/posts/",
+		JSON.parse('{"fkey":"'+StackExchange.options.user.fkey+'","otherText":"'+flagoption+'","fromToolsQueue":"false"}'),
+		function(){console.log('(done)');setTimeout(POSTFlag,5100);}
+	);
+}else{
+	console.log("Finished");
+}
+}
+}
+
+commentCollector.getFuncBody=function(func){
+var entire = func.toString(); 
+return entire.slice(entire.indexOf("{") + 1, entire.lastIndexOf("}"));
+
+}
+
+
 $(document).ready(function() {
 	$('div .btn-success.valid-button').click(function()
 	{
@@ -129,6 +183,7 @@ $(document).ready(function() {
 				table = table + "</table>";
 				contextLink.before(table);
 				contextLink.remove();
+				commentCollector.updateCommentCollector();
 			},
 		});
 	});
@@ -139,5 +194,27 @@ $(document).ready(function() {
 	})
 	$('tr.comment-row').on("click",".context-selectall",function(){
 		$(this).parents('tr.comment-row').find('.comment-context input').prop('checked',true)
+	})
+	
+	$('.togglebtn').on('click',function(){$(this).toggleClass('active');$('.commentcollector-showhide').toggle()})
+	$('#posts-flag-clr').on('click',function(){commentCollector.postIds=[];commentCollector.updateCommentCollector();})
+	$('#comments-flag-clr').on('click',function(){commentCollector.commentIds=[];commentCollector.updateCommentCollector();})
+	
+	$('#comments-flag-gen').on('click',function(){
+		var txt=commentCollector.getFuncBody(commentCollector.commentTemplate);
+		txt=txt.replace("COMMENT_IDS_HERE",commentCollector.commentIds + "");
+		txt=txt.replace("FLAG_METHOD_HERE",$('#flag-dropdown option:selected').val());
+		
+		prompt("Copy the below text and run in console on relevant site",txt);
+		commentCollector.updateCommentCollector();
+	})
+	
+	$('#posts-flag-gen').on('click',function(){
+		var txt=commentCollector.getFuncBody(commentCollector.postTemplate);
+		txt=txt.replace("POST_IDS_HERE",commentCollector.postIds + "");
+		txt=txt.replace("FLAG_METHOD_HERE",$('#post-flag-text').val());
+		
+		prompt("Copy the below text and run in console on relevant site",txt);
+		commentCollector.updateCommentCollector();
 	})
 });
