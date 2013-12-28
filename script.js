@@ -128,7 +128,7 @@ $(document).ready(function() {
 				}
 			},
 		});
-		if($(this).parents('tr.comment-row').find('.comment-context')){
+		if($(this).parents('tr.comment-row').find('.comment-context').length>0){
 			var checkboxen=$(this).parents('tr.comment-row').find('.comment-context input[type=checkbox]')
 			if(checkboxen.length>0&&checkboxen.length==checkboxen.filter(':checked').length){
 				commentCollector.postIds.push($(this).data("postid"));
