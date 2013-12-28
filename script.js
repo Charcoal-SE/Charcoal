@@ -170,9 +170,12 @@ $(document).ready(function() {
 				// console.log(obj.items.length);
 				var astring = "";
 				var table = "<table class='table table-striped comment-context'>";
-		
-				table="<div class='btn-group commentcollector-buttons commentcollector-showhide'><button type='button' class='btn btn-default context-selectall'>All</button><button type='button' class='btn btn-default context-selectnone'>None</button></div><br>"
-					+table;
+				if(obj.items.length>0){
+					table="<div class='btn-group commentcollector-buttons commentcollector-showhide'><button type='button' class='btn btn-default context-selectall'>All</button><button type='button' class='btn btn-default context-selectnone'>None</button><br><br></div>"
+						+table;
+				}else{
+					table="Comment thread empty";
+				}
 				for (var i=0; i<obj.items.length; i++)
 				{
 					astring = astring + obj.items[i].owner.display_name;
