@@ -89,7 +89,7 @@ $(document).ready(function() {
 			console.log("Collected post ids: "+commentCollector.postIds)
 		}else{
 		//	var ret=checkboxen.filter(':checked').map(function(){return $(this).data("commentid")});
-			commentCollector.commentIds.concat([].slice.call(checkboxen.filter(':checked').map(function(){return $(this).data("commentid")})))
+			commentCollector.commentIds=commentCollector.commentIds.concat([].slice.call(checkboxen.filter(':checked').map(function(){return $(this).data("commentid")})))
 			console.log("Collected comment ids: "+commentCollector.commentIds)
 		}
 		commentCollector.updateCommentCollector();
