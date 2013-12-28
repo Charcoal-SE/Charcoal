@@ -128,14 +128,18 @@ $(document).ready(function() {
 				}
 			},
 		});
-		var checkboxen=$(this).parents('tr.comment-row').find('.comment-context input[type=checkbox]')
-		if(checkboxen.length>0&&checkboxen.length==checkboxen.filter(':checked').length){
-			commentCollector.postIds.push($(this).attr("id"));
-			console.log("Collected post ids: "+commentCollector.postIds)
+		if($(this).parents('tr.comment-row').find('.comment-context)){
+			var checkboxen=$(this).parents('tr.comment-row').find('.comment-context input[type=checkbox]')
+			if(checkboxen.length>0&&checkboxen.length==checkboxen.filter(':checked').length){
+				commentCollector.postIds.push($(this).data("postid"););
+				console.log("Collected post ids: "+commentCollector.postIds)
+			}else{
+			//	var ret=checkboxen.filter(':checked').map(function(){return $(this).data("commentid")});
+				commentCollector.commentIds=commentCollector.commentIds.concat([].slice.call(checkboxen.filter(':checked').map(function(){return $(this).data("commentid")})))
+				console.log("Collected comment ids: "+commentCollector.commentIds)
+			}
 		}else{
-		//	var ret=checkboxen.filter(':checked').map(function(){return $(this).data("commentid")});
-			commentCollector.commentIds=commentCollector.commentIds.concat([].slice.call(checkboxen.filter(':checked').map(function(){return $(this).data("commentid")})))
-			console.log("Collected comment ids: "+commentCollector.commentIds)
+			commentCollector.commentIds.push(commentId);	
 		}
 		commentCollector.updateCommentCollector();
 	});
@@ -222,14 +226,14 @@ $(document).ready(function() {
 				{
 					astring = astring + obj.items[i].owner.display_name;
 
-					var contextClass = "";
+					var contextClass = "";var check="";
 
 					if (obj.items[i].comment_id == commentId)
 					{
-						contextClass = "warning";
+						contextClass = "warning";check="checked";
 					}
 					
-					table = table.concat("<tr class='" + contextClass + "'><td class='commentcollector-check commentcollector-showhide'><input type=checkbox data-commentid='"+obj.items[i].comment_id+"'></td><td data-commentid='"+obj.items[i].comment_id+"'>", obj.items[i].body, "<span class='text-muted'> - <a href='" + obj.items[i].owner.link + "'>", obj.items[i].owner.display_name, "</a></td></tr>"); //"<tr>" + obj.items[i].body + "<span class='text-muted'>" + obj.items[i].owner.display_name + "</tr>";
+					table = table.concat("<tr class='" + contextClass + "' "+check+"><td class='commentcollector-check commentcollector-showhide'><input type=checkbox data-commentid='"+obj.items[i].comment_id+"'></td><td data-commentid='"+obj.items[i].comment_id+"'>", obj.items[i].body, "<span class='text-muted'> - <a href='" + obj.items[i].owner.link + "'>", obj.items[i].owner.display_name, "</a></td></tr>"); //"<tr>" + obj.items[i].body + "<span class='text-muted'>" + obj.items[i].owner.display_name + "</tr>";
 				}
 				table = table + "</table>";
 				contextLink.before(table);
