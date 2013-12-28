@@ -100,7 +100,7 @@
 <button class="btn btn-default togglebtn active" id="commentcollector-enable">Collect comment/post IDs for flagging</button>  <div class="commentcollector-showhide" style="display: block;">
 <br><br>
 <div class="row">
-	<div class="col-md-3">Individual comments <span class="badge" id="badge-comments">0</span></div>
+	<div class="col-md-3">Individual comments <span class="badge" <span class="badge" style="background-color:#5cb85c;" id="badge-comments"></span></div>
 	<div class="col-md-4"><div class="input-group">
 		<span class="input-group-addon">Flag as</span>
 		<select class="form-control" id="flag-dropdown">
@@ -118,7 +118,7 @@
 	</div>
 	</div><br>
 <div class="row">
-	<div class="col-md-3">Whole posts (custom flag) <span class="badge" id="badge-posts">0</span></div>
+	<div class="col-md-3">Whole posts (custom flag) <span class="badge" style="background-color:#5cb85c;" id="badge-posts"></span></div>
 	<div class="col-md-4"><div class="input-group">
 		<span class="input-group-addon">Flag as</span>
 		<input class="form-control" type="text" placeholder="Flag text here" id="post-flag-text" value="This post has obsolete comments">
