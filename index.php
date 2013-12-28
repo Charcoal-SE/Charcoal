@@ -111,10 +111,10 @@
 		</select>
 	</div></div>
 	<div class="col-md-2">
-		<button class="form-control btn btn-default" id="comments-flag-gen">Generate</button>
+		<button class="form-control btn btn-default" id="comments-flag-gen" disabled>Generate</button>
 	</div>
 	<div class="col-md-1">
-		<button class="form-control btn btn-default" id="comments-flag-clr">Clear</button>
+		<button class="form-control btn btn-default" id="comments-flag-clr" disabled>Clear</button>
 	</div>
 	</div><br>
 <div class="row">
@@ -124,10 +124,10 @@
 		<input class="form-control" type="text" placeholder="Flag text here" id="post-flag-text" value="This post has obsolete comments">
 	</div></div>
 	<div class="col-md-2">
-		<button class="form-control btn btn-default" id="posts-flag-gen">Generate</button>
+		<button class="form-control btn btn-default" id="posts-flag-gen" disabled>Generate</button>
 	</div>
 	<div class="col-md-1">
-		<button class="form-control btn btn-default" id="posts-flag-clr">Clear</button>
+		<button class="form-control btn btn-default" id="posts-flag-clr" disabled>Clear</button>
 	</div>
 
 </div>
