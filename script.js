@@ -206,7 +206,7 @@ $(document).ready(function() {
 	})
 	$('.togglebtn').on('click',function(){$(this).toggleClass('active');})
 	$('.togglebtn#collecttoggle').on('click',function(){$('.commentcollector-showhide').toggle()})
-	$('.togglebtn#modtoggle').on('click',function(){$(".post-flag-text,.flag-dropdown").prop('disabled',!$(".post-flag-text").prop('disabled'));})
+	$('.togglebtn#modtoggle').on('click',function(){$("#post-flag-text,#flag-dropdown").prop('disabled',!$("#post-flag-text").prop('disabled'));})
 	$('#posts-flag-clr').on('click',function(){commentCollector.postIds=[];commentCollector.updateCommentCollector();})
 	$('#comments-flag-clr').on('click',function(){commentCollector.commentIds=[];commentCollector.updateCommentCollector();})
 	
