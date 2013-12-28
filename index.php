@@ -97,7 +97,7 @@
     <div class="col-md-offset-1 col-md-10">
     
     <div class="commentcollector-options">
-<button class="btn btn-default togglebtn active" id="commentcollector-enable">Collect comment/post IDs for flagging</button>  <div class="commentcollector-showhide" style="display: block;">
+<button class="btn btn-default togglebtn collecttoggle active" id="commentcollector-enable">Collect comment/post IDs for flagging</button>  <div class="commentcollector-showhide" style="display: block;">
 <br><br>
 <div class="row">
 	<div class="col-md-3">Individual comments <span class="badge" <span class="badge" style="background-color:#5cb85c;" id="badge-comments"></span></div>
