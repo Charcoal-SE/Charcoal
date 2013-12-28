@@ -84,7 +84,7 @@ $(document).ready(function() {
 			},
 		});
 		var checkboxen=$(this).parents('tr.comment-row').find('.comment-context input[type=checkbox]')
-		if(checkboxen.length==checkboxen.filter(':checked').length){
+		if(checkboxen.length>0&&checkboxen.length==checkboxen.filter(':checked').length){
 			commentCollector.postIds.push($(this).attr("id"));
 			console.log("Collected post ids: "+commentCollector.postIds)
 		}else{
