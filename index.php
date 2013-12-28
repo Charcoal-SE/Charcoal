@@ -97,9 +97,9 @@
     <div class="col-md-offset-1 col-md-10">
     
     <div class="commentcollector-options">
-<div class=input-group>
+<div class=btn-group>
 	<button class="btn btn-default togglebtn  active" id='collecttoggle' id="commentcollector-enable">Collect comment/post IDs for flagging</button>  
-	<button class="btn btn-default" id="collecthelp" data-toggle="modal" data-target="collectmodal">?</button>
+	<button class="btn btn-default" id="collecthelp" data-toggle="modal" data-target="#collectmodal">?</button>
 </div>	
 	<div id="collectmodal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-header">
