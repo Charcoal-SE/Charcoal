@@ -8,8 +8,8 @@ commentCollector.updateCommentCollector=function(){
 	function emptyIfZero(num){
 		return ((0==num)?"":num);
 	}
-	$('#comments-flag-gen,comments-flag-clr').prop('disabled',0==commentCollector.commentIds.length)
-	$('#posts-flag-gen,posts-flag-clr').prop('disabled',0==commentCollector.postIds.length)
+	$('#comments-flag-gen,#comments-flag-clr').prop('disabled',0==commentCollector.commentIds.length)
+	$('#posts-flag-gen,#posts-flag-clr').prop('disabled',0==commentCollector.postIds.length)
 	$('#badge-posts').html(emptyIfZero(commentCollector.postIds.length));
 	$('#badge-comments').html(emptyIfZero(commentCollector.commentIds.length));
 	if($('#collecttoggle').hasClass('active')){
