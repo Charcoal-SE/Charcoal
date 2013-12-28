@@ -94,7 +94,7 @@
     </p>
     </div> -->
     <div class="col-md-offset-1 col-md-10">
-      <table class="table">
+      <table class="table main-table">
         <?php
           $query = mysql_query("SELECT `Text`, `UserID`, `Id`, `PostId`, `CreationDate`, `reason` FROM " . $_SESSION["Site"] . " WHERE handled=0 ORDER BY LENGTH(`Text`) LIMIT 0,25");
           if ($_SESSION["IsDev"] == 1)
