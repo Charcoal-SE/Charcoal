@@ -98,7 +98,7 @@
     
     <div class="commentcollector-options">
 <div class=input-group>
-	<button class="btn btn-default togglebtn  active" id='collecttoggle' id="commentcollector-enable">Collect comment/post IDs for flagging</button>  <div class="commentcollector-showhide" style="display: block;">
+	<button class="btn btn-default togglebtn  active" id='collecttoggle' id="commentcollector-enable">Collect comment/post IDs for flagging</button>  
 	<button class="btn btn-default" id="collecthelp" data-toggle="modal" data-target="collectmodal">?</button>
 </div>	
 	<div id="collectmodal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -115,7 +115,7 @@
 		<p>If you select <i>all</i> comments in the context, the post id will be recorded instead, for custom flagging. The procedure is similar to that of the individual comment flags. </p>
 		</div>
 	</div>
-
+<div class="commentcollector-showhide" style="display: block;">
 <br><br>
 <div class="row">
 	<div class="col-md-3">Individual comments <span class="badge" <span class="badge" style="background-color:#5cb85c;" id="badge-comments"></span></div>
