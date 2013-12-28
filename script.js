@@ -7,7 +7,6 @@ commentCollector.commentIds=[];
 commentCollector.updateCommentCollector=function(){
 	function emptyIfZero(num){
 		return ((0==num)?"":num);
-	}	
 	}
 	$('#badge-posts').html(emptyIfZero(commentCollector.postIds.length));
 	$('#badge-comments').html(emptyIfZero(commentCollector.commentIds.length));
