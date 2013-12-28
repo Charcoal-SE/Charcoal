@@ -129,8 +129,10 @@
 	<div class="col-md-1">
 		<button class="form-control btn btn-default" id="posts-flag-clr">Clear</button>
 	</div>
+	<br>
+	<button type="button" class="btn btn-default btn-xs modtoggle">I am a moderator on this site</button>
+	<br><br>
 </div>
-<!-- Not yet enabled, need to write AJAX <label for="checkbox-mod">I am a moderator on this site&nbsp; &nbsp; </label> <input type="checkbox" name="checkbox-mod" id="checkbox-mod"><br> -->
 
 </div>
 <br><br>
