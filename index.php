@@ -15,7 +15,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="script.js">var baseURL=<?php echo baseURL();?></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -190,7 +190,7 @@ elseif(!empty($_POST['username']) && !empty($_POST['password']))
      $success = 0;
     }  
     
-    if ($success == 1) echo "<script>this.document.location.href = '/charcoal/index.php?loginsuccess=1'</script>";
+    if ($success == 1) echo "<script>this.document.location.href = '".baseURL().""/index.php?loginsuccess=1'</script>";
     else echo '<script>this.document.location.reload(true);</script>'; 
 }  
 else  
