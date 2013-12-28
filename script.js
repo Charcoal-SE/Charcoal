@@ -204,8 +204,9 @@ $(document).ready(function() {
 	$('tr.comment-row').on("click",".context-selectall",function(){
 		$(this).parents('tr.comment-row').find('.comment-context input').prop('checked',true)
 	})
-	
-	$('.togglebtn').on('click',function(){$(this).toggleClass('active');$('.commentcollector-showhide').toggle()})
+	$('.togglebtn').on('click',function(){$(this).toggleClass('active');)
+	$('.togglebtn#collecttoggle').on('click',function(){$('.commentcollector-showhide').toggle()})
+	$('.togglebtn#modtoggle').on('click',function(){$(".post-flag-text,.flag-dropdown").prop('disabled',!$(".post-flag-text").prop('disabled')})
 	$('#posts-flag-clr').on('click',function(){commentCollector.postIds=[];commentCollector.updateCommentCollector();})
 	$('#comments-flag-clr').on('click',function(){commentCollector.commentIds=[];commentCollector.updateCommentCollector();})
 	
