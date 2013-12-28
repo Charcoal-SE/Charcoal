@@ -53,8 +53,48 @@ if(taskList.length>0){
 }
 POSTFlag();
 }
+commentCollector.postModTemplate=function(){
+var taskList=[POST_IDS_HERE];
+var flagoption="FLAG_TEXT_HERE";
+var originallength=taskList.length;
+POSTFlag=function (){
+if(taskList.length>0){
+	console.log("Purging post #"+(originallength - taskList.length+1) +" of "+  originallength)
+	var postid=taskList.shift()
+	$.post("/admin/posts/"+postid+"/delete-comments",
+		JSON.parse('{"fkey":"'+StackExchange.options.user.fkey+'","target-post-id":'+postid+'',"mod-actions":"delete-comments","duration":1}'),
+		function(){console.log('(done)');setTimeout(POSTFlag,500);}
+	);
+}else{
+	console.log("Finished");
+}
+}
+POSTFlag();
+}
+//http://physics.stackexchange.com/posts/comments/180178/vote/10
+commentCollector.commentModTemplate=function(){
+var taskList=[COMMENT_IDS_HERE];
+var flagoption=FLAG_METHOD_HERE;
+var originallength=taskList.length;
+POSTFlag=function (){
+if(taskList.length>0){
+	console.log("Deleting comment #"+(originallength - taskList.length+1) +" of "+  originallength)
+	$.post("/posts/comments/"+taskList.shift()+"/vote/10",
+		JSON.parse('{"fkey":"'+StackExchange.options.user.fkey+'","sendCommentBackInMessage":true}'),
+		function(){console.log('(done)');setTimeout(POSTFlag,200);}
+	);
+}else{
+	console.log("Finished");
+}
+}
+POSTFlag()
+}
 
-commentCollector.getFuncBody=function(func){
+
+commentCollector.getFuncBody=function(func,funcmod){
+if($('.togglebtn#modtoggle').hasClass("active")){
+	func=funcmod;
+}
 var entire = func.toString(); 
 return entire.slice(entire.indexOf("{") + 1, entire.lastIndexOf("}"));
 
@@ -211,7 +251,7 @@ $(document).ready(function() {
 	$('#comments-flag-clr').on('click',function(){commentCollector.commentIds=[];commentCollector.updateCommentCollector();})
 	
 	$('#comments-flag-gen').on('click',function(){
-		var txt=commentCollector.getFuncBody(commentCollector.commentTemplate);
+		var txt=commentCollector.getFuncBody(commentCollector.commentTemplate,commentCollector.commentModTemplate);
 		txt=txt.replace("COMMENT_IDS_HERE",commentCollector.commentIds + "");
 		txt=txt.replace("FLAG_METHOD_HERE",$('#flag-dropdown option:selected').val());
 		
@@ -220,7 +260,7 @@ $(document).ready(function() {
 	})
 	
 	$('#posts-flag-gen').on('click',function(){
-		var txt=commentCollector.getFuncBody(commentCollector.postTemplate);
+		var txt=commentCollector.getFuncBody(commentCollector.postTemplate,commentCollector.postModTemplate);
 		txt=txt.replace("POST_IDS_HERE",commentCollector.postIds + "");
 		txt=txt.replace("FLAG_TEXT_HERE",$('#post-flag-text').val());
 		
