@@ -131,9 +131,9 @@
 	</div>
 </div>
 <!-- Not yet enabled, need to write AJAX <label for="checkbox-mod">I am a moderator on this site&nbsp; &nbsp; </label> <input type="checkbox" name="checkbox-mod" id="checkbox-mod"><br> -->
-<br>
-</div>
 
+</div>
+<br><br>
 
 </div>
       <table class="table main-table">
