@@ -30,6 +30,7 @@ if(taskList.length>0){
 	console.log("Finished");
 }
 }
+POSTFlag()
 }
 
 commentCollector.postTemplate=function(){
@@ -38,8 +39,8 @@ var flagoption=FLAG_TEXT_HERE;
 var originallength=taskList.length;
 POSTFlag=function (){
 if(taskList.length>0){
-	console.log("Flagging comment #"+(originallength - taskList.length+1) +" of "+  originallength)
-	$.post("/flags/posts/"+taskList.shift()+"/flags/posts/",
+	console.log("Flagging post #"+(originallength - taskList.length+1) +" of "+  originallength)
+	$.post("/flags/posts/"+taskList.shift()+"/add/PostOther",
 		JSON.parse('{"fkey":"'+StackExchange.options.user.fkey+'","otherText":"'+flagoption+'","fromToolsQueue":"false"}'),
 		function(){console.log('(done)');setTimeout(POSTFlag,5100);}
 	);
@@ -47,6 +48,7 @@ if(taskList.length>0){
 	console.log("Finished");
 }
 }
+POSTFlag();
 }
 
 commentCollector.getFuncBody=function(func){
@@ -83,11 +85,11 @@ $(document).ready(function() {
 		});
 		var checkboxen=$(this).parents('tr.comment-row').find('.comment-context input[type=checkbox]')
 		if(checkboxen.length==checkboxen.filter(':checked').length){
-			commentCollector.postIds.push('Postid: '+$(this).attr("id"));
+			commentCollector.postIds.push($(this).attr("id"));
 			console.log("Collected post ids: "+commentCollector.postIds)
 		}else{
-			var ret=checkboxen.filter(':checked').map(function(){return $(this).data("commentid")});
-			commentCollector.commentIds.concat([].slice.call(ret));
+		//	var ret=checkboxen.filter(':checked').map(function(){return $(this).data("commentid")});
+			commentCollector.commentIds.concat([].slice.call(checkboxen.filter(':checked').map(function(){return $(this).data("commentid")})))
 			console.log("Collected comment ids: "+commentCollector.commentIds)
 		}
 		commentCollector.updateCommentCollector();
@@ -213,7 +215,7 @@ $(document).ready(function() {
 	$('#posts-flag-gen').on('click',function(){
 		var txt=commentCollector.getFuncBody(commentCollector.postTemplate);
 		txt=txt.replace("POST_IDS_HERE",commentCollector.postIds + "");
-		txt=txt.replace("FLAG_METHOD_HERE",$('#post-flag-text').val());
+		txt=txt.replace("FLAG_TEXT_HERE",$('#post-flag-text').val());
 		
 		prompt("Copy the below text and run in console on relevant site",txt);
 		commentCollector.updateCommentCollector();
