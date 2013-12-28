@@ -90,6 +90,7 @@ $(document).ready(function() {
 			commentCollector.commentIds.concat([].slice.call(ret));
 			console.log("Collected comment ids: "+commentCollector.commentIds)
 		}
+		commentCollector.updateCommentCollector();
 	});
 	$('div .btn-danger.invalid-button').click(function()
 	{
