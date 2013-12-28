@@ -131,7 +131,7 @@ $(document).ready(function() {
 		if($(this).parents('tr.comment-row').find('.comment-context')){
 			var checkboxen=$(this).parents('tr.comment-row').find('.comment-context input[type=checkbox]')
 			if(checkboxen.length>0&&checkboxen.length==checkboxen.filter(':checked').length){
-				commentCollector.postIds.push($(this).data("postid"););
+				commentCollector.postIds.push($(this).data("postid"));
 				console.log("Collected post ids: "+commentCollector.postIds)
 			}else{
 			//	var ret=checkboxen.filter(':checked').map(function(){return $(this).data("commentid")});
