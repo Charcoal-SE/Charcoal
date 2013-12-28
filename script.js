@@ -107,7 +107,7 @@ $(document).ready(function() {
 						contextClass = "warning";
 					}
 
-					table = table.concat("<tr class='" + contextClass + "'><td data-commentid='"+obj.items[i].commment_context+"'>", obj.items[i].body, "<span class='text-muted'> - <a href='" + obj.items[i].owner.link + "'>", obj.items[i].owner.display_name, "</a></td></tr>"); //"<tr>" + obj.items[i].body + "<span class='text-muted'>" + obj.items[i].owner.display_name + "</tr>";
+					table = table.concat("<tr class='" + contextClass + "'><td data-commentid='"+obj.items[i].comment_id+"'>", obj.items[i].body, "<span class='text-muted'> - <a href='" + obj.items[i].owner.link + "'>", obj.items[i].owner.display_name, "</a></td></tr>"); //"<tr>" + obj.items[i].body + "<span class='text-muted'>" + obj.items[i].owner.display_name + "</tr>";
 				}
 				table = table + "</table>";
 				contextLink.before(table);
