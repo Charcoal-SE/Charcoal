@@ -98,7 +98,7 @@
     
     <div class="commentcollector-options">
 <button class="btn btn-default togglebtn  active" id='collecttoggle' id="commentcollector-enable">Collect comment/post IDs for flagging</button>  <div class="commentcollector-showhide" style="display: block;">
-<br><br>
+<i class="icon-info-sign" data-toggle="tooltip" title="Collect comments and generate code to batch-flag. " id='commentcollector-tooltip'></i><br><br>
 <div class="row">
 	<div class="col-md-3">Individual comments <span class="badge" <span class="badge" style="background-color:#5cb85c;" id="badge-comments"></span></div>
 	<div class="col-md-4"><div class="input-group">
@@ -156,7 +156,7 @@
             echo "<p class='showcontextlink text-info' href='#' id='" . $row["Id"] . "' postid='" . $row["PostId"] . "'> show context</p></br>";
             echo "<div class='actions " . $row["Id"] . "'>";
             echo "<div class='btn btn-success valid-button' id='" . $row["Id"] . "'><strong>valid</strong></div>";
-            echo "<div class='btn btn-danger invalid-button' id='" . $row["Id"] . "' style='margin-left:10px'><strong>invalid</strong></div>";
+            echo "<div class='btn btn-danger invalid-button' id='" . $row["Id"] . "' data-postid='".$row["PostId"]."' style='margin-left:10px'><strong>invalid</strong></div>";
             echo "</div>";
 
             echo "</td></tr>";
