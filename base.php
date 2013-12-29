@@ -52,6 +52,16 @@
 		// 	$items = "<li><a href='http://www.erwaysoftware.com/charcoal/index.php?site=stackoverflow'>Stack Overflow <strong>" . FlagsForSite('stackoverflow') . "</strong></a></li>
 		//           <li class='active'><a href='http://www.erwaysoftware.com/charcoal/index.php?site=physics'>Physics <strong>" . FlagsForSite('physics') . "</strong></a></li>";
 		// }
+
+        if (isDev() == false)
+        {
+        	$subtext = "<small class='text-info'>alpha</small>";
+        }
+        else
+        {
+        	$subtext = "<small class='text-danger'>dev</small>";
+        }
+
 		$returnValue = "<nav class='navbar navbar-default' role='navigation'>
 		  <!-- Brand and toggle get grouped for better mobile display -->
 		      <div class='navbar-header'>
@@ -61,7 +71,7 @@
 		          <span class='icon-bar'></span>
 		          <span class='icon-bar'></span>
 		        </button>
-		        <a class='navbar-brand' href='" . baseURL() . "'>Charcoal <small class='text-info'>alpha</small></a>
+		        <a class='navbar-brand' href='" . baseURL() . "'>Charcoal " . $subtext . "</a>
 		      </div>
 
 		      <!-- Collect the nav links, forms, and other content for toggling -->
