@@ -129,11 +129,21 @@
 		</select>
 	</div></div>
 	<div class="col-md-2">
-		<button class="form-control btn btn-default" id="comments-flag-gen" disabled>Generate</button>
+		<button class="form-control btn btn-default" id="comments-flag-gen" disabled data-toggle='modal' data-target='#flagmodal'>Generate</button>
 	</div>
 	<div class="col-md-1">
 		<button class="form-control btn btn-default" id="comments-flag-clr" disabled>Clear</button>
 	</div>
+  <div id="flagmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="flagCodeLabel" aria-hidden="true" style="display: none;"><div class="modal-dialog"><div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#215;</button>
+    <h3 id="myModalLabel">Flag comments</h3>
+    </div>
+    <div class="modal-body">
+    <p>Copy the following code into your browser's JS console on the related site.</p>
+    <pre id="flagjscode">test</pre>
+    </div>
+  </div></div></div>
 	</div><br>
 <div class="row">
 	<div class="col-md-3">Whole posts (custom flag) <span class="badge" style="background-color:#5cb85c;" id="badge-posts"></span></div>
@@ -142,7 +152,7 @@
 		<input class="form-control" type="text" placeholder="Flag text here" id="post-flag-text" value="This post has obsolete comments">
 	</div></div>
 	<div class="col-md-2">
-		<button class="form-control btn btn-default" id="posts-flag-gen" disabled>Generate</button>
+		<button class="form-control btn btn-default" id="posts-flag-gen" disabled data-toggle='modal' data-target='#flagmodal'>Generate</button>
 	</div>
 	<div class="col-md-1">
 		<button class="form-control btn btn-default" id="posts-flag-clr" disabled>Clear</button>

@@ -261,7 +261,7 @@ $(document).ready(function() {
 		txt=txt.replace("COMMENT_IDS_HERE",commentCollector.commentIds + "");
 		txt=txt.replace("FLAG_METHOD_HERE",$('#flag-dropdown option:selected').val());
 		
-		prompt("Copy the below text and run in console on relevant site",txt);
+		$('#flagjscode').html(txt);
 		commentCollector.updateCommentCollector();
 	})
 	
@@ -270,7 +270,7 @@ $(document).ready(function() {
 		txt=txt.replace("POST_IDS_HERE",commentCollector.postIds + "");
 		txt=txt.replace("FLAG_TEXT_HERE",$('#post-flag-text').val());
 		
-		prompt("Copy the below text and run in console on relevant site",txt);
+		$('#flagjscode').html(txt);
 		commentCollector.updateCommentCollector();
 	})
 });
