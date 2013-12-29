@@ -141,7 +141,7 @@
     </div>
     <div class="modal-body">
     <p>Copy the following code into your browser's JS console on the related site.</p>
-    <pre id="flagjscode">test</pre>
+    <pre id="flagjscode" style='overflow: auto; word-wrap: normal; white-space: pre;'>test</pre>
     </div>
   </div></div></div>
 	</div><br>
