@@ -39,7 +39,7 @@
 			{
 				$active = " class='active'";
 			}
-        	$items = $items . "<li" . $active . "><a href=" . baseURL() . "'/index.php?site=" . $row["siteTableName"] . "'>" . $row["siteName"] . " <strong>" . FlagsForSite($row["siteTableName"]) . "</strong></a></li>"; 
+        	$items = $items . "<li" . $active . "><a href='" . baseURL() . "/index.php?site=" . $row["siteTableName"] . "'>" . $row["siteName"] . " <strong>" . FlagsForSite($row["siteTableName"]) . "</strong></a></li>"; 
         }
 
 		// if ($currentPage == "stackoverflow")
