@@ -28,7 +28,7 @@ POSTFlag=function (){
 if(taskList.length>0){
 	console.log("Flagging comment #"+(originallength - taskList.length+1) +" of "+  originallength)
 	$.post("/flags/comments/"+taskList.shift()+"/add/"+flagoption,
-		JSON.parse('{"fkey":"'+StackExchange.options.user.fkey+'","otherText":""}'),
+		{"fkey":StackExchange.options.user.fkey,"otherText":""},
 		function(){console.log('(done)');setTimeout(POSTFlag,5100);}
 	);
 }else{
@@ -46,7 +46,7 @@ POSTFlag=function (){
 if(taskList.length>0){
 	console.log("Flagging post #"+(originallength - taskList.length+1) +" of "+  originallength)
 	$.post("/flags/posts/"+taskList.shift()+"/add/PostOther",
-		JSON.parse('{"fkey":"'+StackExchange.options.user.fkey+'","otherText":"'+flagoption+'","fromToolsQueue":"false"}'),
+		{"fkey":StackExchange.options.user.fkey,"otherText":"'+flagoption+'","fromToolsQueue":"false"},
 		function(){console.log('(done)');setTimeout(POSTFlag,5100);}
 	);
 }else{
@@ -64,7 +64,7 @@ if(taskList.length>0){
 	console.log("Purging post #"+(originallength - taskList.length+1) +" of "+  originallength)
 	var postid=taskList.shift()
 	$.post("/admin/posts/"+postid+"/delete-comments",
-		JSON.parse('{"fkey":"'+StackExchange.options.user.fkey+'","target-post-id":'+postid+',"mod-actions":"delete-comments","duration":1}'),
+		{"fkey":StackExchange.options.user.fkey,"target-post-id":'+postid+',"mod-actions":"delete-comments","duration":1},
 		function(){console.log('(done)');setTimeout(POSTFlag,500);}
 	);
 }else{
@@ -82,7 +82,7 @@ POSTFlag=function (){
 if(taskList.length>0){
 	console.log("Deleting comment #"+(originallength - taskList.length+1) +" of "+  originallength)
 	$.post("/posts/comments/"+taskList.shift()+"/vote/10",
-		JSON.parse('{"fkey":"'+StackExchange.options.user.fkey+'","sendCommentBackInMessage":true}'),
+		{"fkey":StackExchange.options.user.fkey,"sendCommentBackInMessage":true},
 		function(){console.log('(done)');setTimeout(POSTFlag,200);}
 	);
 }else{
