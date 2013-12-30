@@ -161,7 +161,7 @@
 </div>
 	<br>
 	<button type="button" class="btn btn-default btn-xs togglebtn" id="modtoggle">I am a moderator on this site</button>
-	<button type="button" class="btn btn-default btn-xs togglebtn" id="flagtoggle">Collect as individual comment flags only</button>
+	<button type="button" class="btn btn-default btn-xs togglebtn" id="flagtoggle">Collect as individual comment flags only</button>  
 
 </div>
 <br><br>
