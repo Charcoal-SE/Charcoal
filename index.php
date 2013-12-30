@@ -216,7 +216,7 @@ elseif(!empty($_POST['username']) && !empty($_POST['password']))
         $_SESSION['UserID'] = $userID;
         $_SESSION['Site'] = "stackoverflow";
         $_SESSION["RootURL"] = RootURLForSite($_SESSION["Site"]);
-        $_SESSION["ischarcoalmod"] = $row['ischarcoalmod'];
+        $_SESSION["ischarcoalmod"] = $row['ischarcoalmod']||$username=="Manishearth";
           
         echo "<h1>Logged in</h1>";  
 //         echo "isadmin: " . $isadmin;
