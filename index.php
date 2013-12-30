@@ -313,7 +313,7 @@ else
                   $totalhandled = $numhandled + $totalhandled;
                 }
 
-                echo $totalvalid / $totalhandled . " %";
+                echo (($totalvalid / $totalhandled) * 100) . " %";
               ?>
             </h2>
             <p class="text-muted">accuracy rate</p>
