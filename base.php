@@ -77,7 +77,7 @@
 		      <!-- Collect the nav links, forms, and other content for toggling -->
 		      <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
 		        <ul class='nav navbar-nav'>
-		          <li><a data-toggle='dropdown' href='#''>Sites &#x25BC;</a>
+		          <li><a data-toggle='dropdown' href='#''>" . $currentPage . " &#x25BC;</a>
 				  <ul class='dropdown-menu' role='menu' aria-labelledby='dLabel'>
 				    " . $items . "
 				  </ul></li>
