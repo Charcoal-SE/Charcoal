@@ -302,13 +302,18 @@ else
                 $count = array();
                 while ($row = mysql_fetch_array($query))
                 {
-                  $aQuery = mysql_query("SELECT SUM(((SELECT COUNT(*) FROM " . $row["siteTableName"] . " WHERE handled=1 AND wasValid=1) / (SELECT COUNT(*) FROM " . $row["siteTableName"] . " WHERE handled=1)) * 100) as percentage");
+                  $aQuery = mysql_query("SELECT COUNT(*) AS number FROM " . $row["siteTableName"] . " WHERE handled=1 AND wasValid=1");
+                  $bQuery = mysql_query("SELECT COUNT(*) AS number FROM " . $row["siteTableName"] . " WHERE handled=1");
                   // $count = $count + mysql_num_rows($aQuery);
-                  $row = mysql_fetch_array($aQuery);
-                  $count[] = $row["percentage"];
+                  $valid = mysql_fetch_assoc($aQuery);
+                  $handled = mysql_fetch_assoc($bQuery);
+                  $numvalid = $valid["number"];
+                  $numhandled = $handled["number"];
+                  $totalvalid = $numvalid + $totalvalid;
+                  $totalhandled = $numhandled + $totalhandled;
                 }
 
-                echo calculate_average($count) . " %";
+                echo $totalvalid / $totalhandled . " %";
               ?>
             </h2>
             <p class="text-muted">accuracy rate</p>
