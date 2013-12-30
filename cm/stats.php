@@ -34,7 +34,7 @@
             echo "<tr class='site-row' id='" . $row['id'] . "'><td>";
             echo "<div class='comment'>";
             $handled = mysql_fetch_assoc($aQuery);
-            echo "<span><h4 class='site-text text-info" . $row["siteTableName"] . " </a><span class='small'> - <strong>Total Flags Handled: " . $handled["number"] ."</strong></span></h4>";
+            echo "<span><h4 class='site-text text-info" . $row["siteTableName"] .  "'>" . " </a><span class='small'> - <strong>Total Flags Handled: " . $handled["number"] ."</strong></span></h4>";
             echo "</div>";
 
             echo "</td></tr>";
