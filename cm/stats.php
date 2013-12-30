@@ -25,7 +25,23 @@
   <p style="text-align:right; margin-top:5px; margin-right:15px; font-size:14px;"><strong><?php echo ($_SESSION['ischarcoalmod']==1) ? $_SESSION["Username"] . ' &diams;' : $_SESSION["Username"]; ?></strong> <!-- | <button class='btn btn-warning switchbutton btn-sm'>switch sites</button> | -->|  <a href="../logout.php">logout</a></p>
     </div>
     <div class="col-md-offset-1 col-md-10">
-    
+    <table class="table main-table">
+        <?php
+          $query = mysql_query("SELECT * FROM sites");
+          while ($row = mysql_fetch_array($query))
+          {
+            $aQuery = mysql_query("SELECT COUNT(*) AS number FROM " . $row["siteTableName"] . " WHERE handled=1");
+            echo "<tr class='site-row' id='" . $row['id'] . "'><td>";
+            echo "<div class='comment'>";
+            $handled = mysql_fetch_assoc($aQuery);
+            echo "<span><h4 class='site-text text-info" . $row["siteTableName"] . " </a><span class='small'> - <strong>Total Flags Handled: " . $handled["number"] ."</strong></span></h4>";
+            echo "</div>";
+
+            echo "</td></tr>";
+          }
+          
+          ?>
+      </table>
     </div>
 <?php
 }  
