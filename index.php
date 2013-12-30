@@ -30,7 +30,7 @@
   {  
   ?>
   <?php echo NavBar($_SESSION["Site"]); ?>
-  <p style="text-align:right; margin-top:5px; margin-right:15px; font-size:14px;"><strong><?php echo $_SESSION["Username"]; ?></strong> <!-- | <button class='btn btn-warning switchbutton btn-sm'>switch sites</button> | -->|  <a href="logout.php">logout</a></p>
+  <p style="text-align:right; margin-top:5px; margin-right:15px; font-size:14px;"><strong><?php echo ($_SESSION['showdiamond']==1) ? $_SESSION["Username"] . ' &diams;' : $_SESSION["Username"]; ?></strong> <!-- | <button class='btn btn-warning switchbutton btn-sm'>switch sites</button> | -->|  <a href="logout.php">logout</a></p>
   <?php if ($_SESSION["IsDev"]==1)
   {?>
   <select>
@@ -216,6 +216,7 @@ elseif(!empty($_POST['username']) && !empty($_POST['password']))
         $_SESSION['UserID'] = $userID;
         $_SESSION['Site'] = "physics";
         $_SESSION["RootURL"] = RootURLForSite($_SESSION["Site"]);
+        $_SESSION["showdiamond"] = $row['showdiamond'];
           
         echo "<h1>Logged in</h1>";  
 //         echo "isadmin: " . $isadmin;
