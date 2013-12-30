@@ -62,7 +62,14 @@
         {
         	$subtext = "<small class='text-danger'>dev</small>";
         }
-
+        $cmmenu = "<li><a data-toggle='dropdown' href='#''> cm &#x25BC;</a>
+				  <ul class='dropdown-menu' role='menu' aria-labelledby='dLabel'>
+				    <li><a href='" . baseURL() . "/cm/users.php'>Users</a></li>
+				  </ul></li>";
+		if ($_SESSION["ischarcoalmod"]==0)
+		{
+			$cmmenu='';
+		}
 		$returnValue = "<nav class='navbar navbar-default' role='navigation'>
 		  <!-- Brand and toggle get grouped for better mobile display -->
 		      <div class='navbar-header'>
@@ -82,6 +89,7 @@
 				  <ul class='dropdown-menu' role='menu' aria-labelledby='dLabel'>
 				    " . $items . "
 				  </ul></li>
+				  " . $cmmenu . "
 		        </ul>
 		        <ul class='nav navbar-nav navbar-right'>
 		        </ul>
