@@ -46,7 +46,7 @@ POSTFlag=function (){
 if(taskList.length>0){
 	console.log("Flagging post #"+(originallength - taskList.length+1) +" of "+  originallength)
 	$.post("/flags/posts/"+taskList.shift()+"/add/PostOther",
-		{"fkey":StackExchange.options.user.fkey,"otherText":"+flagoption+","fromToolsQueue":"false"},
+		{"fkey":StackExchange.options.user.fkey,"otherText":flagoption,"fromToolsQueue":"false"},
 		function(){console.log('(done)');setTimeout(POSTFlag,5100);}
 	);
 }else{
