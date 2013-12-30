@@ -64,7 +64,7 @@ if(taskList.length>0){
 	console.log("Purging post #"+(originallength - taskList.length+1) +" of "+  originallength)
 	var postid=taskList.shift()
 	$.post("/admin/posts/"+postid+"/delete-comments",
-		{"fkey":StackExchange.options.user.fkey,"target-post-id":'+postid+',"mod-actions":"delete-comments","duration":1},
+		{"fkey":StackExchange.options.user.fkey,"target-post-id":postid,"mod-actions":"delete-comments","duration":1},
 		function(){console.log('(done)');setTimeout(POSTFlag,500);}
 	);
 }else{
