@@ -30,10 +30,6 @@
       <table class="table main-table">
         <?php
           $query = mysql_query("SELECT * FROM users ORDER BY id asc");
-          if ($_SESSION["IsDev"] == 1)
-          {
-            $query = mysql_query("SELECT `Text`, `UserID`, `Id`, `PostId`, `CreationDate`, `reason` FROM " . $_SESSION["Site"] . " WHERE handled=0 AND reason='please-accept' AND UserId=2554605 ORDER BY LENGTH(`Text`) LIMIT 0,25");
-          }
 
           while ($row = mysql_fetch_array($query))
           {
