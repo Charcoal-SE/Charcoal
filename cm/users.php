@@ -61,13 +61,22 @@
 
         <?php
           $query = mysql_query("SELECT * FROM users ORDER BY id asc");
+          $sites = mysql_query("SELECT * FROM sites");
 
           while ($row = mysql_fetch_array($query))
           {
+            while ($row1 = mysql_fetch_array($sites))
+             {
+                $aQuery = mysql_query("SELECT COUNT(*) AS number FROM " . $row1["siteTableName"] . " WHERE handled=1 
+                 AND handledBy = " . $row["username"] . "");
+                 $handled = mysql_fetch_assoc($aQuery);
+                 $numhandled = $handled["number"];
+                 $totalhandled = $numhandled + $totalhandled;
+             }
             echo "<tr class='user-row' id='" . $row['id'] . "'><td>";
 
             echo "<div class='comment'>";
-            echo "<span><h4 class='comment-text text-info" . $row["Id"] . "'>" . (($row['ischarcoalmod'] == 1) ? $row["username"] . " &diams;" : (($row['isnetworkmod']==1) ? $row["username"] . " &#9826;" : $row['username'])) . " </a><span class='small'> - <strong>user" . $row["id"] ."</strong></span></h4>";
+            echo "<span><h4 class='comment-text text-info" . $row["Id"] . "'>" . (($row['ischarcoalmod'] == 1) ? $row["username"] . " &diams;" : (($row['isnetworkmod']==1) ? $row["username"] . " &#9826;" : $row['username'])) . " </a><span class='small'> - <strong>user" . $row["id"] ."</strong></span></br><strong> " . $handled["number"] . " </handled> flags handled total</h4>";
             echo "</div>";
 
             echo "</td></tr>";
