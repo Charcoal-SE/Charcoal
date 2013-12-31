@@ -26,6 +26,7 @@
     </div>
     <div class="col-md-offset-1 col-md-10">
     <table class="table main-table">
+      <tr class='add-user-row'><td><h5><a>Add user</a></h5></td></tr>
         <?php
           $query = mysql_query("SELECT * FROM sites");
           while ($row = mysql_fetch_array($query))

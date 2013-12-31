@@ -28,6 +28,37 @@
     
     
       <table class="table main-table">
+      <tr class='warning' data-toggle="modal" data-target="#newusermodal"><td><h4 style="text-align:center"><a>Add user</a></h3></td></tr>
+
+      <div id="newusermodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;"><div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#215;</button>
+          <h3 id="myModalLabel">Add user</h3>
+          <p class="text-danger"><strong>Note:</strong> This is UI without functionality. It doesn't work yet.</p>
+          </div>
+          <div class="modal-body">
+            <form role="form">
+            <div class="form-group">
+              <label for="newUserName">Username</label>
+              <input type="username" class="form-control" id="newUserName" placeholder="User's SE username">
+            </div>
+            <div class="form-group">
+              <label for="newUserEmail">Email address</label>
+              <input type="email" class="form-control" id="newUserEmail" placeholder="User's email address">
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> User is a moderator on one or more SE sites
+              </label>
+            </div>
+            <button type="submit" class="btn btn-danger disabled" style="width:100%">Create user</button>
+            <!-- </br></br> -->
+            <!-- <p class='text-muted' style="text-align:center">The user will be assigned a random password and sent an email with their login info.</p> -->
+          </form>
+
+          </div>
+      </div></div></div>
+
         <?php
           $query = mysql_query("SELECT * FROM users ORDER BY id asc");
 
