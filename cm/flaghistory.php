@@ -27,7 +27,7 @@
     <div class="col-md-offset-1 col-md-10">
     <table class="table main-table">
         <?php
-            $query = mysql_query("SELECT handledate, text, wasValid FROM " . $_SESSION["Site"] . " WHERE handled=1 order by handleDate desc");
+            $query = mysql_query("SELECT handleDate, Text, wasValid FROM " . $_SESSION["Site"] . " WHERE handled=1 order by handleDate desc");
             while ($row = mysql_fetch_array($query))
             {
             echo "<tr class='site-row' id='" . $row['id'] . "'><td>";
