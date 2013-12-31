@@ -30,7 +30,7 @@
   {  
   ?>
   <?php echo NavBar($_SESSION["Site"]); ?>
-  <p style="text-align:right; margin-top:5px; margin-right:15px; font-size:14px;"><strong><?php echo (($_SESSION['ischarcoalmod']==1) ? $_SESSION["Username"] . ' &diams;' : ($_SESSION['isnetworkmod']==1) ? $_SESSION['Username'] . " &#9826;" : $_SESSION['Username']); ?></strong> <!-- | <button class='btn btn-warning switchbutton btn-sm'>switch sites</button> | -->|  <a href="logout.php">logout</a></p>
+  <p style="text-align:right; margin-top:5px; margin-right:15px; font-size:14px;"><strong><?php echo (($_SESSION['ischarcoalmod']==1) ? $_SESSION["Username"] . ' &diams;' : (($_SESSION['isnetworkmod']==1) ? $_SESSION['Username'] . " &#9826;" : $_SESSION['Username'])); ?></strong> <!-- | <button class='btn btn-warning switchbutton btn-sm'>switch sites</button> | -->|  <a href="logout.php">logout</a></p>
   <?php if ($_SESSION["IsDev"]==1)
   {?>
   <select>
