@@ -61,17 +61,15 @@
 
         <?php
           $query = mysql_query("SELECT * FROM users ORDER BY id asc");
-          $sites = mysql_query("SELECT * FROM sites");
-          $testing = 0;
           while ($row = mysql_fetch_array($query))
           {
             $totalhandled = 0;
+            $sites = mysql_query("SELECT * FROM sites");
             while ($row1 = mysql_fetch_array($sites))
              {
-               $testing = $testing + 1;
                 print_r($row["id"]);
                 $aQuery = mysql_query("SELECT COUNT(*) AS number FROM " . $row1["siteTableName"] . " WHERE handled=1 
-                 AND handledBy=" . $row["id"] . "");
+                 AND handledBy = " . $row["id"] . "");
                  $handled = mysql_fetch_assoc($aQuery);
                  $numhandled = $handled["number"];
                  $totalhandled = $numhandled + $totalhandled;
