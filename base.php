@@ -75,7 +75,7 @@
 				  <ul class='dropdown-menu-dev' role='menu' aria-labelledby='dLabel'>
 				    <li><a href='" . baseURL() . "/dev/manish.php'>Appease Manish page</a></li>
 				  </ul></li>";
-		if ($_SESSION['Username'] != "Manishearth")
+		if ($_SESSION['Username'] != "Manishearth" || $_SESSION['Username'] != "hichris123")
 		{
 			$devmenu='';
 		}
