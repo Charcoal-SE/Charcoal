@@ -31,10 +31,12 @@
           while ($row = mysql_fetch_array($query))
           {
             $aQuery = mysql_query("SELECT COUNT(*) AS number FROM " . $row["siteTableName"] . " WHERE handled=1");
+            $bQuery = mysql_query("SELECT COUNT(*) AS number FROM " . $row["siteTableName"] . " WHERE handled=1 AND DATE(handleDate) = CURDATE()");
             echo "<tr class='site-row' id='" . $row['id'] . "'><td>";
             echo "<div class='comment'>";
             $handled = mysql_fetch_assoc($aQuery);
-            echo "<span><h4 class='site-text text-info" . $row["siteTableName"] .  "'>" . $row["siteTableName"] . " </a><span class='small'> - <strong>Total Flags Handled: " . $handled["number"] ."</strong></span></h4>";
+            $today = mysql_fetch_assoc($bQuery);
+            echo "<span><h4 class='site-text text-info" . $row["siteTableName"] .  "'>" . $row["siteTableName"] . " </a><span class='small'> - <strong>Total Flags Handled: " . $handled["number"] . " - Flags Handled Today: " . $today["number"] . " </strong></span></h4>";
             echo "</div>";
 
             echo "</td></tr>";
