@@ -69,7 +69,7 @@
             while ($row1 = mysql_fetch_array($sites))
              {
                 $aQuery = mysql_query("SELECT COUNT(*) AS number FROM " . $row1["siteTableName"] . " WHERE handled=1 
-                 AND handledBy = " . $row["id"] . "");
+                 AND handledBy=" . $row["id"]);
                  $handled = mysql_fetch_assoc($aQuery);
                  $numhandled = $handled["number"];
                  $totalhandled = $numhandled + $totalhandled;
