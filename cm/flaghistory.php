@@ -33,7 +33,7 @@
             {//print_r($row);
             echo "<tr class='date-row' id='" . $row['handleDate'] . "'><td>";
             echo "<div class='comment'>";
-            echo "<span class='text-primary'><h4 class='site-text text-info" . $row["Text"] .  "'>" . $row["Text"] . " </a></h4></span><span class='text-muted'>marked <strong>" . (($row["wasValid"]==1) ? "<span class='text-success'>valid</span>" : "<span class='text-danger'>invalid</span>") . "</strong> by <span class='text-primary'><strong>" . (($row['ischarcoalmod'] == 1) ? $row["username"] . " &diams;" : (($row['isnetworkmod']==1) ? $row["username"] . " &#9826;" : $row['username'])) . . "</strong></span>" . " <span class='text-muted'>" . (($row['handleDate']==NULL) ? "" : TimeElapsed($row["handleDate"])) . "</span></span>";
+            echo "<span class='text-primary'><h4 class='site-text text-info" . $row["Text"] .  "'>" . $row["Text"] . " </a></h4></span><span class='text-muted'>marked <strong>" . (($row["wasValid"]==1) ? "<span class='text-success'>valid</span>" : "<span class='text-danger'>invalid</span>") . "</strong> by <span class='text-primary'><strong>" . (($row['ischarcoalmod'] == 1) ? $row["username"] . " &diams;" : (($row['isnetworkmod']==1) ? $row["username"] . " &#9826;" : $row['username'])) . "</strong></span>" . " <span class='text-muted'>" . (($row['handleDate']==NULL) ? "" : TimeElapsed($row["handleDate"])) . "</span></span>";
             echo "</div>";
             echo "</td></tr>";
           }
