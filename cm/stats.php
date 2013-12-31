@@ -36,7 +36,7 @@
             echo "<div class='comment'>";
             $handled = mysql_fetch_assoc($aQuery);
             $today = mysql_fetch_assoc($bQuery);
-            echo "<span><h4 class='site-text text-info" . $row["siteTableName"] .  "'>" . $row["siteTableName"] . " </a><span class='small'> - <strong>Total Flags Handled: " . $handled["number"] . " - Flags Handled Today: " . $today["number"] . " </strong></span></h4>";
+            echo "<span><h4 class='site-text text-info" . $row["siteTableName"] .  "'>" . $row["siteName"] . " </a></h4><strong>" . $handled["number"] . "</strong> total flags handled</br> <strong>" . $today["number"] . "</strong> flags handled today";
             echo "</div>";
 
             echo "</td></tr>";
