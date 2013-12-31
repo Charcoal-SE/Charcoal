@@ -71,7 +71,7 @@
 		{
 			$cmmenu='';
 		}
-		        $devmenu = "<li><a data-toggle='dropdown' href='#''> cm &#x25BC;</a>
+		        $devmenu = "<li><a data-toggle='dropdown' href='#''> dev &#x25BC;</a>
 				  <ul class='dropdown-menu' role='menu' aria-labelledby='dLabel'>
 				    <li><a href='" . baseURL() . "/dev/manish.php'>Appease Manish page</a></li>
 				  </ul></li>";
