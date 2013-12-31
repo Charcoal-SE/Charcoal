@@ -71,6 +71,14 @@
 		{
 			$cmmenu='';
 		}
+		        $devmenu = "<li><a data-toggle='dropdown' href='#''> cm &#x25BC;</a>
+				  <ul class='dropdown-menu' role='menu' aria-labelledby='dLabel'>
+				    <li><a href='" . baseURL() . "/cm/users.php'>Appease Manish page</a></li>
+				  </ul></li>";
+		if ($_SESSION['Username'] == "Manishearth")
+		{
+			$devmenu='';
+		}
 		$returnValue = "<nav class='navbar navbar-default' role='navigation'>
 		  <!-- Brand and toggle get grouped for better mobile display -->
 		      <div class='navbar-header'>
