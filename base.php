@@ -68,19 +68,11 @@
 				    <li><a href='" . baseURL() . "/cm/stats.php'>Stats</a></li>
 				    <li><a href='" . baseURL() . "/cm/flaghistory.php'>Flag History</a></li>
 				  </ul></li>";
-		if ($_SESSION["ischarcoalmod"]==0)
-		{
-			$cmmenu='';
-		}
-		        $devmenu = "<li><a data-toggle='dropdown' href='#''> dev &#x25BC;</a>
-				  <ul class='dropdown-menu-dev' role='menu' aria-labelledby='dLabel'>
-				    <li><a href='" . baseURL() . "/dev/manish.php'>Appease Manish page</a></li>
-				  </ul></li>";
-		if ($_SESSION['Username'] != "Manishearth" || $_SESSION['Username'] != "hichris123")
-		{
-			$devmenu='';
-		}
-		$returnValue = "<nav class='navbar navbar-default' role='navigation'>
+	if ($_SESSION["ischarcoalmod"]==0)
+	{
+		$cmmenu='';
+	}
+	$returnValue = "<nav class='navbar navbar-default' role='navigation'>
 		  <!-- Brand and toggle get grouped for better mobile display -->
 		      <div class='navbar-header'>
 		        <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1'>
@@ -105,7 +97,7 @@
 		        </ul>
 		      </div><!-- /.navbar-collapse -->
 		    </nav>";
-		return $returnValue;
+	return $returnValue;
 	}
 	function FlagsForSite($site)
 	{
