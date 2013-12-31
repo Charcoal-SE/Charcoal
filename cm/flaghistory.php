@@ -32,7 +32,7 @@
             {
             echo "<tr class='site-row' id='" . $row['id'] . "'><td>";
             echo "<div class='comment'>";
-            echo "<span><h4 class='site-text text-info" . $_SESSION["Site"] .  "'>" . $_SESSION["Site"] . " </a></h4><strong>" . $handled["number"] . "</strong> total flags handled</br> <strong>" . $today["number"] . "</strong> flags handled today";
+            echo "<span><h4 class='site-text text-info" . $row["text"] .  "'>" . $_SESSION["text"] . " </a></h4>Handled on: <strong>" . $row["handleDate"] . "</strong> </br> <strong>" . $row["wasValid"] . "</strong> 1 = valid, 2 = invalid";
             echo "</div>";
             echo "</td></tr>";
           }
