@@ -27,12 +27,12 @@
     <div class="col-md-offset-1 col-md-10">
     <table class="table main-table">
         <?php
-            $query = mysql_query("SELECT * FROM " . $_SESSION["Site"] . "s inner join users u on s.handledBy=u.id WHERE s.handled=1 order by s.handleDate desc LIMIT 100");
+            $query = mysql_query("SELECT * FROM " . $_SESSION["Site"] . " inner join users  on handledBy=id WHERE handled=1 order by handleDate desc LIMIT 100");
             while ($row = mysql_fetch_array($query))
             {
             echo "<tr class='date-row' id='" . $row['handleDate'] . "'><td>";
             echo "<div class='comment'>";
-            echo "<span class='text-primary'><h4 class='site-text text-info" . $row["Text"] .  "'>" . $row["Text"] . " </a></h4></span><span class='text-muted'>marked <strong>" . (($row["wasValid"]==1) ? "<span class='text-success'>valid</span>" : "<span class='text-danger'>invalid</span>") . "</strong> by <span class='text-primary'><strong>user" . $row['handledBy'] . "</strong></span>" . " <span class='text-muted'>" . (($row['handleDate']==NULL) ? "" : TimeElapsed($row["handleDate"])) . "</span></span>";
+            echo "<span class='text-primary'><h4 class='site-text text-info" . $row["Text"] .  "'>" . $row["Text"] . " </a></h4></span><span class='text-muted'>marked <strong>" . (($row["wasValid"]==1) ? "<span class='text-success'>valid</span>" : "<span class='text-danger'>invalid</span>") . "</strong> by <span class='text-primary'><strong>user" . $row['handledBy'].$row['username'] . "</strong></span>" . " <span class='text-muted'>" . (($row['handleDate']==NULL) ? "" : TimeElapsed($row["handleDate"])) . "</span></span>";
             echo "</div>";
             echo "</td></tr>";
           }
