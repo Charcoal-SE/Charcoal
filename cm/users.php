@@ -76,7 +76,7 @@
             echo "<tr class='user-row' id='" . $row['id'] . "'><td>";
 
             echo "<div class='comment'>";
-            echo "<span><h4 class='comment-text text-info" . $row["Id"] . "'>" . (($row['ischarcoalmod'] == 1) ? $row["username"] . " &diams;" : (($row['isnetworkmod']==1) ? $row["username"] . " &#9826;" : $row['username'])) . " </a><span class='small'> - <strong>user" . $row["id"] ."</strong></span></br><strong> " . $handled["number"] . " </handled> flags handled total</h4>";
+            echo "<span><h4 class='comment-text text-info" . $row["Id"] . "'>" . (($row['ischarcoalmod'] == 1) ? $row["username"] . " &diams;" : (($row['isnetworkmod']==1) ? $row["username"] . " &#9826;" : $row['username'])) . " </a><span class='small'> - <strong>user" . $row["id"] ."</strong></span></br><strong> " . $handled["number"] . " </strong> flags handled total</h4>";
             echo "</div>";
 
             echo "</td></tr>";
