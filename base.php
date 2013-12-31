@@ -72,10 +72,10 @@
 			$cmmenu='';
 		}
 		        $devmenu = "<li><a data-toggle='dropdown' href='#''> dev &#x25BC;</a>
-				  <ul class='dropdown-menu' role='menu' aria-labelledby='dLabel'>
+				  <ul class='dropdown-menu-dev' role='menu' aria-labelledby='dLabel'>
 				    <li><a href='" . baseURL() . "/dev/manish.php'>Appease Manish page</a></li>
 				  </ul></li>";
-		if ($_SESSION['Username'] == "Manishearth")
+		if ($_SESSION['Username'] != "Manishearth")
 		{
 			$devmenu='';
 		}
