@@ -32,7 +32,7 @@
             {
             echo "<tr class='date-row' id='" . $row['handleDate'] . "'><td>";
             echo "<div class='comment'>";
-            echo "<span><h4 class='site-text text-info" . $row["Text"] .  "'>" . $row["Text"] . " </a></h4>Handled on: <strong>" . $row["handleDate"] . "</strong> </br> <strong>" . $row["wasValid"] . "</strong> 1 = valid, 2 = invalid";
+            echo "<span><h4 class='site-text text-info" . $row["Text"] .  "'>" . $row["Text"] . " </a></h4>Handled on: <strong>" . $row["handleDate"] . "</strong> </br> <strong>" . $row["wasValid"] . "</strong> 0 = invalid, 1 = valid";
             echo "</div>";
             echo "</td></tr>";
           }
