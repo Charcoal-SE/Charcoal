@@ -25,6 +25,7 @@
   <p style="text-align:right; margin-top:5px; margin-right:15px; font-size:14px;"><strong><?php echo ($_SESSION['ischarcoalmod']==1) ? $_SESSION["Username"] . ' &diams;' : $_SESSION["Username"]; ?></strong> <!-- | <button class='btn btn-warning switchbutton btn-sm'>switch sites</button> | -->|  <a href="../logout.php">logout</a></p>
     </div>
     <div class="col-md-offset-1 col-md-10">
+    <button type="button" class="btn btn-default btn-xs togglebtn" id="invalidtoggle">Show only Invalids</button>  
     <table class="table main-table">
         <?php
             $query = mysql_query("SELECT * FROM " . $_SESSION["Site"] . " s left join users u  on s.handledBy=u.id WHERE s.handled=1 order by s.handleDate desc LIMIT 100");
