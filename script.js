@@ -143,6 +143,32 @@ $(document).ready(function() {
 		}
 		commentCollector.updateCommentCollector();
 	});
+	$('div .btn-success.flaggable-button').click(function()
+	{
+		$(this).html('<strong>working...</strong');
+
+		var commentId = $(this).attr("id");
+		var tableRow = "tr#" + commentId.toString();
+		// alert(tableRow);
+		var argString = "id=" + commentId;
+
+		$.ajax({
+			type: "POST",
+			url: "submitValid.php",
+			data: argString,
+			success: function(data)
+			{
+
+				// alert(data);
+
+				if (data == "success")
+				{
+					$(tableRow).fadeOut();	
+				}
+			},
+		});
+	});
+	
 	$('div .btn-danger.invalid-button').click(function()
 	{
 		$(this).html('<strong>working...</strong');
