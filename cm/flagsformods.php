@@ -46,10 +46,9 @@
           $result = implode(",",$result);
             echo "<tr class='ids' id='1'><td>";
             echo "<div class='comment'>";
-            echo "<span class='text-muted'><h4 class='site-text text-info" . $result .  "'>" . $result . " </a></h4></span>";
+            echo "<span class='text-muted'>" .  $result . "</span>";
             echo "</div>";
             echo "</td></tr>";
-            print_r($result);
           ?>
       </table>
     </div>
