@@ -32,6 +32,7 @@
     <table class="table main-table">
         <?php
             $query = mysql_query("SELECT * FROM " . $_SESSION["Site"] . " s left join users u  on s.handledBy=u.id WHERE s.handled=1 AND s.toFlag = 1 order by s.handleDate desc LIMIT 100");
+            $result = array();
             //$query = mysql_query("SELECT * FROM " . $_SESSION["Site"] . " WHERE handled=1 order by handleDate desc LIMIT 100");
             while ($row = mysql_fetch_array($query))
             {//print_r($row);
@@ -40,8 +41,12 @@
             echo "<span class='text-primary'><h4 class='site-text text-info" . $row["Text"] .  "'>" . $row["Text"] . " </a></h4></span><span class='text-muted'>marked <strong>" . (($row["wasValid"]==1) ? "<span class='text-success'>valid</span>" : "<span class='text-danger'>invalid</span>") . "</strong> by <span class='text-primary'><strong>" . (($row['ischarcoalmod'] == 1) ? $row["username"] . " &diams;" : (($row['isnetworkmod']==1) ? $row["username"] . " &#9826;" : $row['username'])) . "</strong></span>" . " <span class='text-muted'>" . (($row['handleDate']==NULL) ? "" : TimeElapsed($row["handleDate"])) . "</span></br><span class='text-muted'>" . $row['PostId'] . "</span></span>";
             echo "</div>";
             echo "</td></tr>";
+            array_push($row["PostId"], $result);
           }
-          
+          $result = implode(",",$result);
+            echo "<div class='comment'>";
+            echo "<span class='text-muted'>" . $result . "</span>";
+            echo "</div>";
           ?>
       </table>
     </div>
