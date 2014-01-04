@@ -7,7 +7,7 @@
     <!-- Bootstrap -->
     <link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <!-- <script type="text/javascript" src="script.js"></script> -->
+    <script type="text/javascript" src="../script.js"></script>
     <script type="text/javascript">var baseURL="<?php echo baseURL();?>"
     $(document).ready(function(){$('.togglebtn').on('click',function(){$(this).toggleClass('active');});
     $('.togglebtn#invalidtoggle').on('click',function(){$('.main-table tr:has(.text-success)').toggle();})
