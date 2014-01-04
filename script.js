@@ -154,7 +154,7 @@ $(document).ready(function() {
 
 		$.ajax({
 			type: "POST",
-			url: "http://www.erwaysoftware.com/charcoaldev/submitFlaggable.php",
+			url: "../submitFlaggable.php",
 			data: argString,
 			success: function(data)
 			{
