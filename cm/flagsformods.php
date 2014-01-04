@@ -41,7 +41,7 @@
             echo "<span class='text-primary'><h4 class='site-text text-info" . $row["Text"] .  "'>" . $row["Text"] . " </a></h4></span><span class='text-muted'>marked <strong>" . (($row["wasValid"]==1) ? "<span class='text-success'>valid</span>" : "<span class='text-danger'>invalid</span>") . "</strong> by <span class='text-primary'><strong>" . (($row['ischarcoalmod'] == 1) ? $row["username"] . " &diams;" : (($row['isnetworkmod']==1) ? $row["username"] . " &#9826;" : $row['username'])) . "</strong></span>" . " <span class='text-muted'>" . (($row['handleDate']==NULL) ? "" : TimeElapsed($row["handleDate"])) . "</span></br><span class='text-muted'>" . $row['PostId'] . "</span></span>";
             echo "</div>";
             echo "</td></tr>";
-            array_push($row["PostId"], $result);
+            array_push($row['PostId'], $result);
           }
           $result = implode(",",$result);
             echo "<tr class='ids' id='1'><td>";
