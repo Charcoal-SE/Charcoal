@@ -42,7 +42,6 @@
             echo "</div>";
             echo "</td></tr>";
             array_push($row['PostId'], $result);
-            print_r($result)
           }
           $result = implode(",",$result);
             echo "<tr class='ids' id='1'><td>";
