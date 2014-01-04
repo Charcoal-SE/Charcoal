@@ -49,6 +49,7 @@
             echo "<span class='text-muted'>" . $result . "</span>";
             echo "</div>";
             echo "</td></tr>";
+            print_r($result);
           ?>
       </table>
     </div>
