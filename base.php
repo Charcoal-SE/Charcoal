@@ -68,6 +68,7 @@
 				    <li><a href='" . baseURL() . "/cm/stats.php'>Stats</a></li>
 				    <li><a href='" . baseURL() . "/cm/flaghistory.php'>Flag History</a></li>
 				    <li><a href='" . baseURL() . "/cm/flagqueue.php'>Flag Queue</a></li>
+				    <li><a href='" . baseURL() . "/cm/flagqueue.php'>Flags for Mods</a></li>
 				  </ul></li>";
 	if ($_SESSION["ischarcoalmod"]==0)
 	{
