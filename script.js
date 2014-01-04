@@ -154,7 +154,7 @@ $(document).ready(function() {
 
 		$.ajax({
 			type: "POST",
-			url: "submitValid.php",
+			url: "submitFlaggable.php",
 			data: argString,
 			success: function(data)
 			{
