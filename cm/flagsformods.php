@@ -44,9 +44,11 @@
             array_push($row["PostId"], $result);
           }
           $result = implode(",",$result);
+            echo "<tr class='ids' id='1'><td>";
             echo "<div class='comment'>";
             echo "<span class='text-muted'>" . $result . "</span>";
             echo "</div>";
+            echo "</td></tr>";
           ?>
       </table>
     </div>
