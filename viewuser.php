@@ -37,24 +37,27 @@
         $query = mysql_query("select * from users where id=" . $userid);
         $user = mysql_fetch_array($query);
         echo '<h2>' . $user["username"] . '</h2>';
+        echo "<hr>";
+        $totalhandled = 0;
+        $handledtoday = 0;
+        $sites = mysql_query("SELECT * FROM sites");
+        while ($row1 = mysql_fetch_array($sites))
+          {
+              $aQuery = mysql_query("SELECT COUNT(*) AS number FROM " . $row1["siteTableName"] . " WHERE handled=1 
+              AND handledBy = " . $userid . "");
+              $bQuery = mysql_query("SELECT COUNT(*) AS number FROM " . $row1["siteTableName"] . " WHERE handled=1 
+              AND handledBy = " . $userid . " AND DATE(handleDate) = CURDATE()");
+              $handled = mysql_fetch_assoc($aQuery);
+              $today = mysql_fetch_assoc($bQuery);
+              $numhandled = $handled["number"];
+              $numtoday = $today["number"];
+              $totalhandled = $numhandled + $totalhandled;
+              $handledtoday = $numtoday + $handledtoday;
+          }
+        echo "<span class='small'><strong> " . $totalhandled . " </strong> flags handled total</span>";
+        echo "</br>";
+        echo "<span class='small'><strong> " . $totalhandled . " </strong> flags handled today (UTC day)</span>"
       ?>
-      <table class="table main-table">
-        <?php
-            $totalhandled = 0;
-            $sites = mysql_query("SELECT * FROM sites");
-            while ($row1 = mysql_fetch_array($sites))
-             {
-                $aQuery = mysql_query("SELECT COUNT(*) AS number FROM " . $row1["siteTableName"] . " WHERE handled=1 
-                 AND handledBy = " . $userid . "");
-                 $handled = mysql_fetch_assoc($aQuery);
-                 $numhandled = $handled["number"];
-                 $totalhandled = $numhandled + $totalhandled;
-             }
-             echo "<span class='small'><strong> " . $totalhandled . " </strong> flags handled total</span>";
-             echo "</br>";
-             echo "<span class='small'><strong> " . $totalhandled . " </strong> flags handled today</span>"
-        ?>
-      </table>
     </div>
 <?php
 }  
