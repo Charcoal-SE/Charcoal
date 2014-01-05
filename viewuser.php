@@ -54,7 +54,8 @@
               $totalhandled = $numhandled + $totalhandled;
               $handledtoday = $numtoday + $handledtoday;
           }
-        echo "<span class='small'>Created on <strong> " . $user["CreationDate"] . " </strong></span>";
+        echo "<span class='small'>Created on <strong> " . $user["CreationDate"] . $user["CreationDate"] . " </strong></span>";
+        echo "</br>";
         echo "<span class='small'><strong> " . $totalhandled . " </strong> flags handled total</span>";
         echo "</br>";
         echo "<span class='small'><strong> " . $handledtoday . " </strong> flags handled today (UTC day)</span>"
