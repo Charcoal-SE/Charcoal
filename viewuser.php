@@ -37,8 +37,8 @@
         $userid = $_REQUEST['id'];
         $query = mysql_query("select * from users where id=" . $userid);
         $array = mysql_fetch_array($query);
-        $user = $array[1];
-        echo '<h2>' . $user["username"] . '</h2>';
+        $user = $array["username"];
+        echo '<h2>' . $user . '</h2>';
       ?>
     </div>
 <?php
