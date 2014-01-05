@@ -74,6 +74,18 @@
 	{
 		$cmmenu='';
 	}
+	$modmenu = "<li><a data-toggle='dropdown' href='#''> mod &#x25BC;</a>
+				  <ul class='dropdown-menu' role='menu' aria-labelledby='dLabel'>
+				    <li><a href='" . baseURL() . "/cm/users.php'>Users</a></li>
+				    <li><a href='" . baseURL() . "/cm/stats.php'>Stats</a></li>
+				    <li><a href='" . baseURL() . "/cm/flaghistory.php'>Flag History</a></li>
+				    <li><a href='" . baseURL() . "/cm/flagqueue.php'>Flag Queue</a></li>
+				    <li><a href='" . baseURL() . "/mod/flagsformods.php'>Flags for Mods</a></li>
+				  </ul></li>";
+	if ($_SESSION["isnetworkmod"]==0)
+	{
+		$modmenu='';
+	}
 	$returnValue = "<nav class='navbar navbar-default' role='navigation'>
 		  <!-- Brand and toggle get grouped for better mobile display -->
 		      <div class='navbar-header'>
@@ -94,6 +106,7 @@
 				    " . $items . "
 				  </ul></li>
 				  " . $cmmenu . "
+				  " . $modmenu . "
 		        </ul>
 		        <ul class='nav navbar-nav navbar-right'>
 		        </ul>
