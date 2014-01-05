@@ -22,7 +22,7 @@
   </head>
   <body>
   <?php  
-  if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Username']) && $_SESSION["ischarcoalmod"]==1)  
+  if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Username']) && $_SESSION["isnetworkmod"]==1)  
   {  
   ?>
   <?php echo NavBar($_SESSION["Site"]); ?>
