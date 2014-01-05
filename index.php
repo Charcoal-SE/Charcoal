@@ -31,69 +31,7 @@
   ?>
   <?php echo NavBar($_SESSION["Site"]); ?>
   <p style="text-align:right; margin-top:5px; margin-right:15px; font-size:14px;"><strong><?php echo (($_SESSION['ischarcoalmod']==1) ? $_SESSION["Username"] . ' &diams;' : (($_SESSION['isnetworkmod']==1) ? $_SESSION['Username'] . " &#9826;" : $_SESSION['Username'])); ?></strong> <!-- | <button class='btn btn-warning switchbutton btn-sm'>switch sites</button> | -->|  <a href="logout.php">logout</a></p>
-  <?php if ($_SESSION["IsDev"]==1)
-  {?>
-  <select>
-    <option value="all">All</option>
-    <option value="obsolete">Obsolete</option>
-    <option value="please-accept">Please-Accept</option>
-  </select>
-  <?php } ?>
-    <!-- <div class="page-header">
-        <h1 class="col-md-offset-1"><?php echo $_SESSION["Site"]; ?> Obsolete Comment Queue:  <span class="label label-warning">
 
-        <?php
-          $query = mysql_query("SELECT COUNT(*) FROM " . $_SESSION["Site"] . " WHERE handled=0 AND LENGTH(`Text`)<40");
-          while ($row = mysql_fetch_array($query)) {
-            print_r($row['COUNT(*)']);
-          }
-        ?>
-
-        </span></h1>
-        <!-- <button type="button" class="btn btn-default btn-md" style="float:right"> -->
-            <!-- <span class="glyphicon glyphicon-user"></span> Mod Login -->
-        <!-- </button> -->
-    </div>
-    <!-- <div class="col-md-2 col-md-offset-1">
-    <h3>Handling Stats</h3>
-    <p class="text-muted">
-    <?php
-      // $query = mysql_query("SELECT COUNT(*) FROM " . $_SESSION["Site"] . " WHERE handled=1 AND handledBy=1");
-      // while ($row = mysql_fetch_array($query))
-      // {
-      //   print_r($row["COUNT(*)"]);
-      // }
-      // echo "</br>Manish - ";
-      // $query = mysql_query("SELECT COUNT(*) FROM " . $_SESSION["Site"] . " WHERE handled=1 AND handledBy=2");
-      // while ($row = mysql_fetch_array($query))
-      // {
-      //   print_r($row["COUNT(*)"]);
-      // }
-      // echo "</br>jadarnel - ";
-      // $query = mysql_query("SELECT COUNT(*) FROM " . $_SESSION["Site"] . " WHERE handled=1 AND handledBy=3");
-      // while ($row = mysql_fetch_array($query))
-      // {
-      //   print_r($row["COUNT(*)"]);
-      // }
-      // echo "</br>animuson - ";
-      // $query = mysql_query("SELECT COUNT(*) FROM " . $_SESSION["Site"] . " WHERE handled=1 AND handledBy=4");
-      // while ($row = mysql_fetch_array($query))
-      // {
-      //   print_r($row["COUNT(*)"]);
-      // }
-      // $query = mysql_query("SELECT * FROM users");
-      // while ($row = mysql_fetch_array($query))
-      // {
-      //   $numHandledQuery = mysql_query("SELECT COUNT(*) as 'count' FROM " . $_SESSION['Site'] . " WHERE handled=1 AND handledBy=" . $row["id"]);
-      //   echo $row["username"] . " - ";
-      //   while ($arow = mysql_fetch_row($numHandledQuery)) {
-      //     echo $arow["count"] . "</br>";
-      //   }
-      // }
-    echo "This is currently broked. Sorry!";
-    ?>
-    </p>
-    </div> -->
     <div class="col-md-offset-1 col-md-10">
     
     <div class="commentcollector-options">
@@ -331,8 +269,6 @@ else
       </div>
     </div>
 
-    <!-- <p class="text-muted" style="font-size:20px; text-align:center">Ready to join us? Great!</p> -->
-    <!-- <div class="text-center"><a href="/charcoal/signup.php"><button class="btn btn-primary btn-lg" style="margin:auto"><strong>Start helping!</strong></button></a></div> -->
     <?php
 }  
 ?>  
