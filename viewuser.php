@@ -38,6 +38,23 @@
         $user = mysql_fetch_array($query);
         echo '<h2>' . $user["username"] . '</h2>';
       ?>
+      <table class="table main-table">
+        <?php
+            $totalhandled = 0;
+            $sites = mysql_query("SELECT * FROM sites");
+            while ($row1 = mysql_fetch_array($sites))
+             {
+                $aQuery = mysql_query("SELECT COUNT(*) AS number FROM " . $row1["siteTableName"] . " WHERE handled=1 
+                 AND handledBy = " . $userid . "");
+                 $handled = mysql_fetch_assoc($aQuery);
+                 $numhandled = $handled["number"];
+                 $totalhandled = $numhandled + $totalhandled;
+             }
+             echo "<span class='small'><strong> " . $totalhandled . " </strong> flags handled total</span>";
+             echo "</br>";
+             echo "<span class='small'><strong> " . $totalhandled . " </strong> flags handled today</span>"
+        ?>
+      </table>
     </div>
 <?php
 }  
