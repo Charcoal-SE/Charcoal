@@ -36,7 +36,8 @@
         $userid = $_REQUEST['id'];
         $query = mysql_query("select * from users where id=" . $userid);
         $user = mysql_fetch_array($query);
-        echo '<h2>' . $user["username"] . '</h2>';
+        $username = (($user['ischarcoalmod']==1) ? $user["username"] . ' <small>&diams; charcoal moderator</small>' : (($user['isnetworkmod']==1) ? $user['username'] . " <small>&#9826; SE moderator</small>" : $user['username']));
+        echo '<h2>' . $username . '</h2>';
         echo "<hr>";
         $totalhandled = 0;
         $handledtoday = 0;
