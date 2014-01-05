@@ -56,7 +56,7 @@
           }
         echo "<span class='small'><strong> " . $totalhandled . " </strong> flags handled total</span>";
         echo "</br>";
-        echo "<span class='small'><strong> " . $totalhandled . " </strong> flags handled today (UTC day)</span>"
+        echo "<span class='small'><strong> " . $handledtoday . " </strong> flags handled today (UTC day)</span>"
       ?>
     </div>
 <?php
