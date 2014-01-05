@@ -40,6 +40,7 @@
         echo "<hr>";
         $totalhandled = 0;
         $handledtoday = 0;
+        $creationdate = $user["CreationDate"]
         $sites = mysql_query("SELECT * FROM sites");
         while ($row1 = mysql_fetch_array($sites))
           {
@@ -54,7 +55,7 @@
               $totalhandled = $numhandled + $totalhandled;
               $handledtoday = $numtoday + $handledtoday;
           }
-        echo "<span class='small'>Created on <strong> " . $user["CreationDate"] . $user["CreationDate"] . " </strong></span>";
+        echo "<span class='small'>Created on <strong> " . $creationdate . " </strong></span>";
         echo "</br>";
         echo "<span class='small'><strong> " . $totalhandled . " </strong> flags handled total</span>";
         echo "</br>";
