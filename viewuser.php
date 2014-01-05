@@ -43,6 +43,8 @@
         $handledtoday = 0;
         $creationdate = $user["CreationDate"];
         $sites = mysql_query("SELECT * FROM sites");
+        echo "<span class='small'>Created on <strong> " . $creationdate . " </strong></span>";
+        echo "</br>";
         while ($row1 = mysql_fetch_array($sites))
           {
               $aQuery = mysql_query("SELECT COUNT(*) AS number FROM " . $row1["siteTableName"] . " WHERE handled=1 
@@ -55,9 +57,10 @@
               $numtoday = $today["number"];
               $totalhandled = $numhandled + $totalhandled;
               $handledtoday = $numtoday + $handledtoday;
+              echo "<span class='small'><strong> " . $numhandled . " </strong> flags handled on " . $row1["siteTableName"]
+              . " </span>";
+              echo "</br>";
           }
-        echo "<span class='small'>Created on <strong> " . $creationdate . " </strong></span>";
-        echo "</br>";
         echo "<span class='small'><strong> " . $totalhandled . " </strong> flags handled total</span>";
         echo "</br>";
         echo "<span class='small'><strong> " . $handledtoday . " </strong> flags handled today (UTC day)</span>"
