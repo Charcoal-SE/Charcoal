@@ -40,7 +40,7 @@
         echo "<hr>";
         $totalhandled = 0;
         $handledtoday = 0;
-        $creationdate = $user["CreationDate"]
+        $creationdate = $user["CreationDate"];
         $sites = mysql_query("SELECT * FROM sites");
         while ($row1 = mysql_fetch_array($sites))
           {
