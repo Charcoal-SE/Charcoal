@@ -29,8 +29,8 @@
           $query = mysql_query("SELECT * FROM sites");
           while ($row = mysql_fetch_array($query))
           {
-            $aQuery = mysql_query("SELECT COUNT(*) AS number FROM " . $row["siteTableName"] . " WHERE handled=1");
-            $bQuery = mysql_query("SELECT COUNT(*) AS number FROM " . $row["siteTableName"] . " WHERE handled=1 AND DATE(handleDate) = CURDATE()");
+            $aQuery = mysql_query("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND site='" . $row["siteTableName"] . "'");
+            $bQuery = mysql_query("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND DATE(handleDate) = CURDATE() AND site='" . $row["siteTableName"] . "'");
             echo "<tr class='site-row' id='" . $row['id'] . "'><td>";
             echo "<div class='comment'>";
             $handled = mysql_fetch_assoc($aQuery);
