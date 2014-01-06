@@ -106,7 +106,7 @@
 		        " . $username . "
 		        " . $modmenu . "
 		        " . $cmmenu . "
-				<li><a href='" . baseUrl() . "'/logout.php'>logout</a></li>
+				<li><a href='" . baseUrl() . "/logout.php'>logout</a></li>
 		        </ul>
 		      </div><!-- /.navbar-collapse -->
 		    </nav>";
