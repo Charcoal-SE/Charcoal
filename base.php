@@ -81,7 +81,7 @@
 	{
 		$modmenu='';
 	}
-	$username = '<li><a href="' . baseURL() . '/viewuser.php?id=' . $_SESSION['UserID'] . '"><strong>' . (($_SESSION['ischarcoalmod']==1) ? $_SESSION["Username"] . ' &diams;' : (($_SESSION['isnetworkmod']==1) ? $_SESSION['Username'] . " &#9826;" : $_SESSION['Username'])) . '</strong></a></li><li><a href="' . baseUrl() . '/logout.php">logout</a></li>';
+	$username = '<li><a href="' . baseURL() . '/viewuser.php?id=' . $_SESSION['UserID'] . '"><strong>' . (($_SESSION['ischarcoalmod']==1) ? $_SESSION["Username"] . ' &diams;' : (($_SESSION['isnetworkmod']==1) ? $_SESSION['Username'] . " &#9826;" : $_SESSION['Username'])) . '</strong></a></li>';
 	$returnValue = "<nav class='navbar navbar-default' role='navigation'>
 		  <!-- Brand and toggle get grouped for better mobile display -->
 		      <div class='navbar-header'>
@@ -101,11 +101,12 @@
 				  <ul class='dropdown-menu' role='menu' aria-labelledby='dLabel'>
 				    " . $items . "
 				  </ul></li>
-				  " . $cmmenu . "
-				  " . $modmenu . "
 		        </ul>
 		        <ul class='nav navbar-nav navbar-right'>
 		        " . $username . "
+		        " . $modmenu . "
+		        " . $cmmenu . "
+				<li><a href='" . baseUrl() . "'/logout.php'>logout</a></li>
 		        </ul>
 		      </div><!-- /.navbar-collapse -->
 		    </nav>";
