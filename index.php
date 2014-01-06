@@ -202,13 +202,9 @@ else
           <div class="caption">
             <h2>
               <?php
-                $query = mysql_query("SELECT * FROM sites");
                 $count = 0;
-                while ($row = mysql_fetch_array($query))
-                {
-                  $aQuery = mysql_query("SELECT * FROM " . $row["siteTableName"] . " WHERE handled=1");
-                  $count = $count + mysql_num_rows($aQuery);
-                }
+                $aQuery = mysql_query("SELECT * FROM flags WHERE handled=1");
+                $count = mysql_num_rows($aQuery);
                 echo $count;
               ?>
             </h2>
@@ -231,21 +227,14 @@ else
                     return $average;
                 }
 
-
-                $query = mysql_query("SELECT * FROM sites");
-                $count = array();
-                while ($row = mysql_fetch_array($query))
-                {
-                  $aQuery = mysql_query("SELECT COUNT(*) AS number FROM " . $row["siteTableName"] . " WHERE handled=1 AND wasValid=1");
-                  $bQuery = mysql_query("SELECT COUNT(*) AS number FROM " . $row["siteTableName"] . " WHERE handled=1");
+                  $count = array();
+                  $aQuery = mysql_query("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND wasValid=1");
+                  $bQuery = mysql_query("SELECT COUNT(*) AS number FROM flags WHERE handled=1");
                   // $count = $count + mysql_num_rows($aQuery);
                   $valid = mysql_fetch_assoc($aQuery);
                   $handled = mysql_fetch_assoc($bQuery);
-                  $numvalid = $valid["number"];
-                  $numhandled = $handled["number"];
-                  $totalvalid = $numvalid + $totalvalid;
-                  $totalhandled = $numhandled + $totalhandled;
-                }
+                  $totalvalid = $valid["number"];
+                  $totalhandled = $handled["number"];
 
                 echo (($totalvalid / $totalhandled) * 100) . " %";
               ?>
