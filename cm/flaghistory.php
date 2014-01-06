@@ -31,7 +31,7 @@
     <button type="button" class="btn btn-default btn-xs togglebtn" id="invalidtoggle">Show only Invalids</button>  
     <table class="table main-table">
         <?php
-            $query = mysql_query("SELECT * FROM " . $_SESSION["Site"] . " s left join users u  on s.handledBy=u.id WHERE s.handled=1 order by s.handleDate desc LIMIT 100");
+            $query = mysql_query("SELECT * FROM flags s left join users u  on s.handledBy=u.id WHERE s.handled=1 AND s.site='" . $_SESSION["Site"] . "' order by s.handleDate desc LIMIT 100");
             //$query = mysql_query("SELECT * FROM " . $_SESSION["Site"] . " WHERE handled=1 order by handleDate desc LIMIT 100");
             while ($row = mysql_fetch_array($query))
             {//print_r($row);
