@@ -36,23 +36,23 @@
           <p class="text-danger"><strong>Note:</strong> This is UI without functionality. It doesn't work yet.</p>
           </div>
           <div class="modal-body">
-            <form role="form">
+            <form role="form" action="adduser.php">
             <div class="form-group">
-              <label for="newUserName">Username</label>
-              <input type="username" class="form-control" id="newUserName" placeholder="User's SE username">
+              <label for="username">Username</label>
+              <input type="username" class="form-control" id="username" name="username" placeholder="User's SE username">
             </div>
             <div class="form-group">
-              <label for="newUserEmail">Email address</label>
-              <input type="email" class="form-control" id="newUserEmail" placeholder="User's email address">
+              <label for="email">Email address</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="User's email address">
             </div>
             <div class="checkbox">
               <label>
-                <input type="checkbox"> User is a moderator on one or more SE sites
+                <input type="checkbox" name="isnetworkmod"> User is a moderator on one or more SE sites
               </label>
             </div>
-            <button type="submit" class="btn btn-danger disabled" style="width:100%">Create user</button>
+            <button type="submit" class="btn btn-danger" style="width:100%">Create user</button>
             <!-- </br></br> -->
-            <!-- <p class='text-muted' style="text-align:center">The user will be assigned a random password and sent an email with their login info.</p> -->
+            <p class='text-muted' style="text-align:center">The user will be assigned a random password and sent an email with their login info.</p>
           </form>
 
           </div>
