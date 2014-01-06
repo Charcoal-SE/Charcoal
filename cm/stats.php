@@ -48,7 +48,7 @@
 }  
 else  
 {
-  echo '<p>Heh, nice try</p>';
+  header("Location: "  . baseURL() . "/index.php"); 
 }  
 ?>  
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
