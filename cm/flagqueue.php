@@ -34,11 +34,7 @@
     <div class="col-md-offset-1 col-md-10">
     <table class="table main-table">
         <?php
-          $query = mysql_query("SELECT `Text`, `UserID`, `Id`, `PostId`, `CreationDate`, `reason` FROM " . $_SESSION["Site"] . " WHERE handled=0 ORDER BY LENGTH(`Text`) LIMIT 0,25");
-          if ($_SESSION["IsDev"] == 1)
-          {
-            $query = mysql_query("SELECT `Text`, `UserID`, `Id`, `PostId`, `CreationDate`, `reason` FROM " . $_SESSION["Site"] . " WHERE handled=0 AND reason='please-accept' AND UserId=2554605 ORDER BY LENGTH(`Text`) LIMIT 0,25");
-          }
+          $query = mysql_query("SELECT `Text`, `UserID`, `Id`, `PostId`, `CreationDate`, `reason` FROM flags WHERE handled=0 AND site='" . $_SESSION["Site"] . "' ORDER BY LENGTH(`Text`) LIMIT 0,25");
           while ($row = mysql_fetch_array($query))
           {
             echo "<tr class='comment-row' id='" . $row['Id'] . "'><td>";
