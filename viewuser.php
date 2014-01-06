@@ -47,10 +47,10 @@
         echo "</br>";
         while ($row1 = mysql_fetch_array($sites))
           {
-              $aQuery = mysql_query("SELECT COUNT(*) AS number FROM " . $row1["siteTableName"] . " WHERE handled=1 
-              AND handledBy = " . $userid . "");
-              $bQuery = mysql_query("SELECT COUNT(*) AS number FROM " . $row1["siteTableName"] . " WHERE handled=1 
-              AND handledBy = " . $userid . " AND DATE(handleDate) = CURDATE()");
+              $aQuery = mysql_query("SELECT COUNT(*) AS number FROM flags WHERE handled=1 
+              AND handledBy = " . $userid . " AND site='" . $row1["siteTableName"] . "'");
+              $bQuery = mysql_query("SELECT COUNT(*) AS number FROM flags WHERE handled=1 
+              AND handledBy = " . $userid . " AND DATE(handleDate) = CURDATE() AND site='" . $row1["siteTableName"] . "'");
               $handled = mysql_fetch_assoc($aQuery);
               $today = mysql_fetch_assoc($bQuery);
               $numhandled = $handled["number"];
