@@ -33,7 +33,6 @@
           <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#215;</button>
           <h3 id="myModalLabel">Add user</h3>
-          <p class="text-danger"><strong>Note:</strong> This is UI without functionality. It doesn't work yet.</p>
           </div>
           <div class="modal-body">
             <form role="form" action="adduser.php">
