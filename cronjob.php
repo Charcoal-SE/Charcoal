@@ -1,13 +1,5 @@
 <?php
-    include "context.php"; //for the curl method
-
-	$dbhost = MySQLHost();
-	$dbname = MySQLDB();
-	$dbuser = MySQLUsername();
-	$dbpass = MySQLPassword();
-  
-	mysql_connect($dbhost, $dbuser, $dbpass) or die("MySQL Error: " . mysql_error());  
-	mysql_select_db($dbname) or die("MySQL Error: " . mysql_error()); 
+    include "base.php"; //for the curl method
 
 	$siteArr = mysql_fetch_assoc(mysql_query("select siteRootURL, siteTableName from sites order by lastCronCheck asc limit 1"));
 	$siteAPIKey = $siteArr['siteRootURL'];
@@ -27,7 +19,7 @@
 	$response = (new Curl)->exec($url . '?' . http_build_query($data), [CURLOPT_ENCODING => 'gzip']);
  
 	$obj1 = json_decode($response);
-	// $obj = $obj1['items'];
+	$items = $obj1->{'items'};
 
-	print($obj1);
+	print_r($items);
 
