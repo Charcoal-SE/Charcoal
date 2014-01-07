@@ -22,8 +22,8 @@
 	$items = $obj1->{'items'};
 
 	foreach ($items as $comment) {
-		unset(array_search($comment->{'comment_id'}, $commentsToInspect));
+		unset($commentsToInspect[array_search($comment->{'comment_id'}, $commentsToInspect)]);
 	}
 
-	print_r($items);
+	print_r(count($commentsToInspect));
 
