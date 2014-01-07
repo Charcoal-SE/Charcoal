@@ -1,6 +1,6 @@
 <?php
   //magic goes here
-  include "context.php";
+  include "base.php";
   
   $query = mysql_query("SELECT Count(*) AS number, FROM flags WHERE handled=0 ORDER BY LENGTH(`Text`)");
   $row = mysql_fetch_assoc($query);
@@ -18,5 +18,9 @@
     $url = 'https://api.stackexchange.com/2.1/posts/' . $result . '/comments';
     $data = array("site" => $flagid["site"], "filter" => "!SrhZo6aE2O(w*j4-4i", "order" => "asc", key => "mmpZxopkL*psP5WoBK6BuA((");
     $response = (new Curl)->exec($url . '?' . http_build_query($data), [CURLOPT_ENCODING => 'gzip']);
+    
+    $obj1 = json_decode($response);
+    $items = $obj1->{'items'};
+    print(items);
   }
   
