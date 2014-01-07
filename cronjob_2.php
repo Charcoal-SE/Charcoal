@@ -18,8 +18,9 @@
     $url = 'https://api.stackexchange.com/2.1/posts/' . $result . '/comments';
     $data = array("site" => $flagid["site"], "filter" => "!SrhZo6aE2O(w*j4-4i", "order" => "asc", key => "mmpZxopkL*psP5WoBK6BuA((");
     $response = (new Curl)->exec($url . '?' . http_build_query($data), [CURLOPT_ENCODING => 'gzip']);
-    
+    print_r("hi");
     $obj1 = json_decode($response);
+    print_r($obj1);
     $items = $obj1->{'items'};
     print_r($items);
   }
