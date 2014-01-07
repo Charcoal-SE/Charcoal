@@ -1,6 +1,7 @@
 <?php
     
     include "config.php";
+    include "context.php"; //for the curl method
 
 	$dbhost = MySQLHost();
 	$dbname = MySQLDB();
