@@ -14,6 +14,7 @@
     while ($flagid = mysql_fetch_assoc($getflags){
       array_push($result, $flagid["Id"]);
     }
+    $result = implode(",",$result);
     $url = 'https://api.stackexchange.com/2.1/posts/' . $result . '/comments';
     $data = array("site" => $flagid["site"], "filter" => "!SrhZo6aE2O(w*j4-4i", "order" => "asc", key => "mmpZxopkL*psP5WoBK6BuA((");
     $response = (new Curl)->exec($url . '?' . http_build_query($data), [CURLOPT_ENCODING => 'gzip']);
