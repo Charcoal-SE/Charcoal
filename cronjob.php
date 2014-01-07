@@ -33,9 +33,3 @@
 
 	print($obj1);
 
- 
-  public function getInfo()
-  {
-    return $this->info;
-  }
-}
