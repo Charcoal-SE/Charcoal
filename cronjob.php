@@ -21,5 +21,9 @@
 	$obj1 = json_decode($response);
 	$items = $obj1->{'items'};
 
+	foreach ($items as $comment) {
+		unset(array_search($comment->{'comment_id'}, $commentsToInspect));
+	}
+
 	print_r($items);
 
