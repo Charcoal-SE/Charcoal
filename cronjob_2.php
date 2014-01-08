@@ -20,7 +20,6 @@
         array_push($result, $flagid["Id"]);
       }
       $result1 = implode(";",$result);
-      $url = 'https://api.stackexchange.com/2.1/comments/' . $result1 . '';
       $data = array("site" => $site["siteTableName"], "filter" => "!SrhZo6aE2O(w*j4-4i", "order" => "asc", key => "mmpZxopkL*psP5WoBK6BuA((");
       $response = (new Curl)->exec($url . '?' . http_build_query($data), [CURLOPT_ENCODING => 'gzip']);
  
