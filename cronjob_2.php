@@ -1,5 +1,4 @@
-
-<?php include "../base.php"; ?>
+<?php include "base.php"; ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -22,6 +21,7 @@
     <div class="col-md-offset-1 col-md-10">
     <table class="table main-table">
         <?php
+          //magic goes here
   echo "<span class='small'>Started cronjob</span>";
   $sites = mysql_query("SELECT * FROM sites");
   while ($site = mysql_fetch_array($sites))
@@ -69,4 +69,4 @@
     
 
   </body>
-</html>  //magic goes here
+</html>
