@@ -12,7 +12,7 @@
 	{
 		$commentsToInspect[] = $row["Id"];
 	}
-
+	print_r(count($commentsToInspect));
 	$url = 'https://api.stackexchange.com/2.1/comments/' . implode(";", $commentsToInspect);
 	$data = array("site" => $siteAPIKey, "filter" => "!9im-EfY_i", "order" => "asc", 'key' => "mmpZxopkL*psP5WoBK6BuA((");
  
