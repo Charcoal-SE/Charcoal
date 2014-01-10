@@ -8,7 +8,7 @@
 	$query = mysql_query("SELECT `Id` FROM flags WHERE site='" . $siteTableName . "' AND handled=0 ORDER BY LENGTH(`Text`) limit 100");
 	//$query = mysql_query("SELECT `Id` FROM flags WHERE site=stackoverflow AND handled=0 ORDER BY LENGTH(`Text`) limit 100");
 	$commentsToInspect = array();
-	echo "SELECT `Id` FROM flags WHERE site='" . $siteTableName . "' AND handled=0 ORDER BY LENGTH(`Text`) limit 100"
+	echo "SELECT `Id` FROM flags WHERE site='" . $siteTableName . "' AND handled=0 ORDER BY LENGTH(`Text`) limit 100";
 
 	while ($row = mysql_fetch_array($query))
 	{
