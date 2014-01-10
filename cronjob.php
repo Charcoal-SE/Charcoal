@@ -13,7 +13,6 @@
 	while ($row = mysql_fetch_array($query))
 	{
 		$commentsToInspect[] = $row["Id"];
-		print_r($row);
 	}
 	
 	print_r(count($commentsToInspect));
@@ -30,4 +29,8 @@
 	}
 
 	print_r(count($commentsToInspect));
-
+	
+	foreach ($commentsToInspect as $valid){
+              $timestamp = date("Y:m:d H:i:s");
+              mysql_query("UPDATE flags SET handled=1, handleDate='$timestamp', wasValid=1, wasObsolete=1, handledBy= 0 WHERE `Id`=" . $valid. " AND  `site`='" . $siteTableName  . "'");
+        }
