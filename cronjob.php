@@ -32,5 +32,5 @@
 	
 	foreach ($commentsToInspect as $valid){
               $timestamp = date("Y:m:d H:i:s");
-              mysql_query("UPDATE flags SET handled=1, handleDate='$timestamp', wasValid=1, wasObsolete=1, handledBy= 0 WHERE `Id`=" . $valid. " AND  `site`='" . $siteTableName  . "'");
+              mysql_query("UPDATE flags SET handled=1, handleDate='$timestamp', wasValid=1, wasObsolete=1, handledBy=0 WHERE `Id`=" . $valid. " AND  `site`='" . $siteTableName  . "'");
         }
