@@ -24,7 +24,10 @@
 	$obj1 = json_decode($response);
 	$items = $obj1->{'items'};
 	$there = array();
-	$there = $comment->{'comment_id'};
+	
+	foreach ($items as $commentthere) {
+	        $there = $commentthere->{'comment_id'};
+	}
         
         print_r($there);
 	foreach ($items as $comment) {
@@ -32,8 +35,8 @@
 	}
 	
 	foreach ($there as $stillthere){
-                $time = date("Y:m:d H:i:s");
-                mysql_query("UPDATE flags SET lastCronCheck='$time' WHERE `Id`=" . $stillthere. " AND  `site`='" . $siteTableName  . "'");
+                 $time = date("Y:m:d H:i:s");
+                 mysql_query("UPDATE flags SET lastCronCheck='$time' WHERE `Id`=" . $stillthere. " AND  `site`='" . $siteTableName  . "'");
         }
 
 	print_r(count($commentsToInspect));
