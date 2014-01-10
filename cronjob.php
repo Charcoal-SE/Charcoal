@@ -12,6 +12,7 @@
 	while ($row = mysql_fetch_array($query))
 	{
 		$commentsToInspect[] = $row["Id"];
+		print_r($row);
 	}
 	
 	print_r(count($commentsToInspect));
