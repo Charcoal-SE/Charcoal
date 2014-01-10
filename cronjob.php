@@ -4,6 +4,7 @@
 	$siteArr = mysql_fetch_assoc(mysql_query("select siteRootURL, siteTableName from sites order by lastCronCheck asc limit 1"));
 	$siteAPIKey = $siteArr['siteRootURL'];
 	$siteTableName = $siteArr["siteTableName"];
+	echo $siteTableName;
 
 	$query = mysql_query("SELECT `Id` FROM flags WHERE site='" . $siteTableName . "' AND handled=0 AND (MONTH(CURRENT_TIMESTAMP())!=MONTH(lastCronCheck)) ORDER BY LENGTH(`Text`) limit 100");
 	//$query = mysql_query("SELECT `Id` FROM flags WHERE site=stackoverflow AND handled=0 ORDER BY LENGTH(`Text`) limit 100");
