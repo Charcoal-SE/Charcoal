@@ -26,7 +26,7 @@
 	$there = array();
 	
 	foreach ($items as $commentthere) {
-	        $there = $commentthere->{'comment_id'};
+	        array_push($there, $commentthere->{'comment_id'});
 	}
         
         print_r($there);
