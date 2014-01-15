@@ -31,13 +31,17 @@
 	}
         
         print_r($there);
-	foreach ($items as $comment) {
+        if(!empty($there)){
+	  foreach ($items as $comment) {
 		unset($commentsToInspect[array_search($comment->{'comment_id'}, $commentsToInspect)]);
-	}
-	
+	  }
+        }
+
+        if(!empty($there)){
 	foreach ($there as $stillthere){
                  $time = date("Y:m:d H:i:s");
                  mysql_query("UPDATE flags SET lastCronCheck='$time' WHERE `Id`=" . $stillthere. " AND  `site`='" . $siteTableName  . "'");
+        }
         }
 
 	print_r(count($commentsToInspect));
