@@ -6,10 +6,10 @@
 	$siteTableName = $siteArr["siteTableName"];
 	echo $siteTableName;
 
-	$query = mysql_query("SELECT `Id` FROM flags WHERE site='" . $siteTableName . "' AND handled=0 AND (MONTH(CURRENT_TIMESTAMP())!=MONTH(lastCronCheck)) OR IFNULL(0,1)=1 ORDER BY LENGTH(`Text`) limit 100");
+	$query = mysql_query("SELECT `Id` FROM flags WHERE site='" . $siteTableName . "' AND handled=0 AND (MONTH(CURRENT_TIMESTAMP())!=MONTH(lastCronCheck)) OR lastCronCheck IS NULL ORDER BY LENGTH(`Text`) limit 100");
 	//$query = mysql_query("SELECT `Id` FROM flags WHERE site=stackoverflow AND handled=0 ORDER BY LENGTH(`Text`) limit 100");
 	$commentsToInspect = array();
-	echo "SELECT `Id` FROM flags WHERE site='" . $siteTableName . "' AND handled=0 AND (MONTH(CURRENT_TIMESTAMP())!=MONTH(lastCronCheck)) ORDER BY LENGTH(`Text`) limit 100";
+	echo "SELECT `Id` FROM flags WHERE site='" . $siteTableName . "' AND handled=0 AND (MONTH(CURRENT_TIMESTAMP())!=MONTH(lastCronCheck)) OR lastCronCheck IS NULL ORDER BY LENGTH(`Text`) limit 100";
 
 	while ($row = mysql_fetch_array($query))
 	{
