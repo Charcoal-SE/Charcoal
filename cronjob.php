@@ -44,6 +44,7 @@
 	
 	foreach ($commentsToInspect as $valid){
               $timestamp = date("Y:m:d H:i:s");
-              mysql_query("UPDATE flags SET handled=1, handleDate='$timestamp', lastCronCheck='$timestamp', wasValid=1, wasObsolete=1, handledBy=0 WHERE `Id`=" . $valid. " AND  `site`='" . $siteTableName  . "'");
+              $timestamp1 = date("Y:m:d H:i:s");
+              mysql_query("UPDATE flags SET handled=1, handleDate='$timestamp', lastCronCheck='$timestamp1', wasValid=1, wasObsolete=1, handledBy=0 WHERE `Id`=" . $valid. " AND  `site`='" . $siteTableName  . "'");
               print_r($valid);
         }
