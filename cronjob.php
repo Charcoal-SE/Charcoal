@@ -31,20 +31,22 @@
 	}
         
         print_r($there);
-	foreach ($items as $comment) {
+        if(!empty($there)){
+	  foreach ($items as $comment) {
 		unset($commentsToInspect[array_search($comment->{'comment_id'}, $commentsToInspect)]);
-	}
+	  }
+        }
 
+        if(!empty($there)){
 	foreach ($there as $stillthere){
                  $time = date("Y:m:d H:i:s");
                  mysql_query("UPDATE flags SET lastCronCheck='$time' WHERE `Id`=" . $stillthere. " AND  `site`='" . $siteTableName  . "'");
+        }
         }
 
 	print_r(count($commentsToInspect));
 	
 	foreach ($commentsToInspect as $valid){
               $timestamp = date("Y:m:d H:i:s");
-              $timestamp1 = date("Y:m:d H:i:s");
-              mysql_query("UPDATE flags SET handled=1, handleDate='$timestamp', lastCronCheck='$timestamp1', wasValid=1, wasObsolete=1, handledBy=0 WHERE `Id`=" . $valid. " AND  `site`='" . $siteTableName  . "'");
-              print_r($valid);
+              mysql_query("UPDATE flags SET handled=1, handleDate='$timestamp', lastCronCheck='time', wasValid=1, wasObsolete=1, handledBy=0 WHERE `Id`=" . $valid. " AND  `site`='" . $siteTableName  . "'");
         }
