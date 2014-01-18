@@ -56,6 +56,7 @@
               $timestamp = date("Y:m:d H:i:s");
               
               print_r($valid);
+              print_r("UPDATE flags SET handled=1, handleDate='" . $timestamp . "', lastCronCheck='" . $timestamp . "', wasValid=1, wasObsolete=1, handledBy=0 WHERE `Id`=" . $valid. " AND `site`='" . $siteTableName  . "'");
               
               mysql_query("UPDATE flags SET handled=1, handleDate='" . $timestamp . "', lastCronCheck='" . $timestamp . "', wasValid=1, wasObsolete=1, handledBy=0 WHERE `Id`=" . $valid. " AND `site`='" . $siteTableName  . "'") or die(mysql_error());
         }
