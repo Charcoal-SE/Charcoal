@@ -36,15 +36,20 @@
 	echo 'ended array_push';
         
         print_r($there);
+        
+        echo 'started unsetting';
 	foreach ($items as $comment) {
                 unset($commentsToInspect[array_search($comment->{'comment_id'}, $commentsToInspect)]);
 	}
-
+	echo 'ended unsetting';
+	
+	echo 'started lastCronCheck setting';
 	foreach ($there as $stillthere){
                  $time = date("Y:m:d H:i:s");
                  mysql_query("UPDATE flags SET lastCronCheck='$time' WHERE `Id`=" . $stillthere. " AND  `site`='" . $siteTableName  . "'")  or die(mysql_error());
         }
-
+	echo 'ended lastCronCheck setting';
+	
 	print_r(count($commentsToInspect));
 	
 	foreach ($commentsToInspect as $valid){
