@@ -44,8 +44,8 @@
 	echo 'ended unsetting';
 	
 	echo 'started lastCronCheck setting';
+	$time = date("Y:m:d H:i:s");
 	foreach ($there as $stillthere){
-                 $time = date("Y:m:d H:i:s");
                  mysql_query("UPDATE flags SET lastCronCheck='$time' WHERE `Id`=" . $stillthere. " AND  `site`='" . $siteTableName  . "'")  or die(mysql_error());
         }
 	echo 'ended lastCronCheck setting';
