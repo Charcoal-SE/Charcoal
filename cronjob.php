@@ -1,6 +1,6 @@
 <?php
     include "base.php"; //for the curl method
-
+	echo 'started';
 	$siteArr = mysql_fetch_assoc(mysql_query("select siteRootURL, siteTableName from sites order by lastCronCheck asc limit 1"));
 	$siteAPIKey = $siteArr['siteRootURL'];
 	$siteTableName = $siteArr["siteTableName"];
@@ -17,18 +17,23 @@
 	}
 	
 	print_r(count($commentsToInspect));
+	
 	$url = 'https://api.stackexchange.com/2.1/comments/' . implode(";", $commentsToInspect);
 	$data = array("site" => $siteAPIKey, "filter" => "!9im-EfY_i", "order" => "asc", 'key' => "mmpZxopkL*psP5WoBK6BuA((");
  
 	$response = (new Curl)->exec($url . '?' . http_build_query($data), [CURLOPT_ENCODING => 'gzip']);
- 
+ 	
+ 	echo 'got response';
+ 	
 	$obj1 = json_decode($response);
 	$items = $obj1->{'items'};
 	$there = array();
 	
+	echo 'starting array_push';
 	foreach ($items as $commentthere) {
 	        array_push($there, $commentthere->{'comment_id'});
 	}
+	echo 'ended array_push';
         
         print_r($there);
 	foreach ($items as $comment) {
