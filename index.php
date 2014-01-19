@@ -125,6 +125,11 @@
           }
           
           ?>
+         <tr class="reload-comments-button">
+             <td>
+                 <h3>reload flags</h3>
+             </td>
+         </tr>
       </table>
     </div>
 <?php
