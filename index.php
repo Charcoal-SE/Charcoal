@@ -127,6 +127,7 @@
           ?>
          <tr class="reload-comments-button">
              <td>
+             	 </br>
                  <h3 class="text-info" style="text-alignment:center; margin:auto">reload flags</h3>
              </td>
          </tr>
