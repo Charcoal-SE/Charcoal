@@ -299,7 +299,7 @@ $(document).ready(function() {
 		$('#flagjscode').html(txt);
 		commentCollector.updateCommentCollector();
 	})
-	$('.reload-flag-button').click(function(){
+	$('.reload-flags-button').click(function(){
 			alert("Hi!");
 		// $(this).html('<strong>working...</strong');
 		// var contextLink = $(this);
