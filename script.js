@@ -299,9 +299,9 @@ $(document).ready(function() {
 		$('#flagjscode').html(txt);
 		commentCollector.updateCommentCollector();
 	})
-	$('.reload-flags-button').click(function(){
-			alert("Hi!");
-		// $(this).html('<strong>working...</strong');
+	$('h3 .reload-flags-button').click(function(){
+			// alert("Hi!");
+		$(this).html('<strong>working...</strong');
 		// var contextLink = $(this);
 		// var commentId = $(this).attr("id");
 		// var postId = $(this).attr("postid");
