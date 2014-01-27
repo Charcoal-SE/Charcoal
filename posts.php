@@ -41,13 +41,13 @@
             echo "<tr class='post-row' id='" . $row['Id'] . "'><td>";
 
             echo "<div class='post'>";
+            echo "<div class='postscore col-md-1'><strong>" . $row["Score"] . "</strong></div>";
             echo "<a href='http://" . $_SESSION['RootURL'] . "/a/" . $row["Id"] . "' target='_newtab'><h4 class='post-title " . $row["Id"] . "'>" . $row["Body"] . " </a><span class='small'> - <strong>user" . $row["OwnerUserId"] ."</strong> " . TimeElapsed($row["CreationDate"]) . " <span class='text-danger'>(" . $row["reason"] . ")</span></span></h4>";
             echo "</div>";
             echo "</br>";
-            echo "<p class='showcontextlink text-info' href='#' id='" . $row["Id"] . "' postid='" . $row["PostId"] . "'> show context</p></br>";
             echo "<div class='actions " . $row["Id"] . "'>";
-            echo "<div class='btn btn-success valid-button' id='" . $row["Id"] . "' data-postid='".$row["PostId"]."'  ><strong>valid</strong></div>";
-            echo "<div class='btn btn-danger invalid-button' id='" . $row["Id"] . "' data-postid='".$row["PostId"]."' style='margin-left:10px'><strong>invalid</strong></div>";
+            echo "<div class='btn btn-success valid-button' id='" . $row["Id"] . "' data-postid='".$row["Id"]."'  ><strong>valid</strong></div>";
+            echo "<div class='btn btn-danger invalid-button' id='" . $row["Id"] . "' data-postid='".$row["Id"]."' style='margin-left:10px'><strong>invalid</strong></div>";
             echo "</div>";
 
             echo "</td></tr>";
