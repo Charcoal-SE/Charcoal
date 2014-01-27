@@ -38,14 +38,14 @@
           $query = mysql_query("SELECT `Score`, `Body`, `OwnerUserId`, `Id`, `CreationDate`, `reason` FROM postflags WHERE site='" . $_SESSION["Site"] . "' AND handled=0 ORDER BY LENGTH(`Body`) LIMIT 0,25");
           while ($row = mysql_fetch_array($query))
           {
-            echo "<tr class='post-row' id='" . $row['Id'] . "'><td>";
+            echo "<tr class='post-row' id='" . $row['Id'] . "' style='border-bottom:none'><td>";
 
             echo "<div class='post'>";
             echo "<div class='postscore col-md-1'><h2 class='text-muted'>" . $row["Score"] . "</h2></div>";
             echo "<div class='postbody col-md-6 lead'><p>" . $row["Body"] . "</p></div>";
             echo "</div>";
             echo "</td></tr>";
-            echo "<tr class='actions ". $row['Id'] . "' style='border-top:none !important'><td>";
+            echo "<tr class='actions ". $row['Id'] . "' style='border-top:none'><td>";
             echo "<div class='btn btn-success valid-button col-md-offset-1' id='" . $row["Id"] . "' data-postid='".$row["Id"]."'  ><strong>valid</strong></div>";
             echo "<div class='btn btn-danger invalid-button' id='" . $row["Id"] . "' data-postid='".$row["Id"]."' style='margin-left:10px'><strong>invalid</strong></div>";
             echo "</td></tr>";
