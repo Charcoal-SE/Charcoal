@@ -41,7 +41,7 @@
             echo "<tr class='post-row' id='" . $row['Id'] . "'><td>";
 
             echo "<div class='post col-md-12'>";
-            echo "<div class='postscore col-md-1'><h2>" . $row["Score"] . "</h2></div>";
+            echo "<div class='postscore col-md-1'><h2 class='text-muted'>" . $row["Score"] . "</h2></div>";
             echo "<div class='postbody col-md-6 lead'><p>" . $row["Body"] . "</p></div>";
             echo "</div>";
             echo "<div class='actions " . $row["Id"] . "'>";
