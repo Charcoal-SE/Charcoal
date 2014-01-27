@@ -111,7 +111,10 @@ $(document).ready(function() {
 		var commentId = $(this).attr("id");
 		var tableRow = "tr#" + commentId.toString();
 		// alert(tableRow);
+		
 		var argString = "id=" + commentId;
+		
+		if (currentPage=='posts') argString = argString + "isPost=1"
 
 		$.ajax({
 			type: "POST",
