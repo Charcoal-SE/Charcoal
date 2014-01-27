@@ -35,12 +35,13 @@
     
       <table class="table main-table">
         <?php
-          $query = mysql_query("SELECT `Score`, `Body`, `OwnerUserId`, `Id`, `CreationDate`, `reason` FROM postflags WHERE site='" . $_SESSION["Site"] . "' AND handled=0 ORDER BY LENGTH(`Body`) LIMIT 0,25");
+          $query = mysql_query("SELECT `Score`, `Body`, `OwnerUserId`, `Id`, `CreationDate`, `reason`, `Title` FROM postflags WHERE site='" . $_SESSION["Site"] . "' AND handled=0 ORDER BY LENGTH(`Body`) LIMIT 0,25");
           while ($row = mysql_fetch_array($query))
           {
             echo "<tr class='post-row' id='" . $row['Id'] . "' style='border-bottom:none'><td>";
 
             echo "<div class='post'>";
+            echo "<h4>" . $row['Title'] . "</h4>";
             echo "<div class='postscore col-md-1'><h2 class='text-muted'>" . $row["Score"] . "</h2></div>";
             echo "<div class='postbody col-md-4'><div class='text-muted lead'><p>" . $row["Body"] . "</p></div>";
             echo "<p><span style='background-color:#f6f6d6'>" . $row["reason"] . "</span></p></div>";
