@@ -39,10 +39,9 @@
           while ($row = mysql_fetch_array($query))
           {
             echo "<tr class='post-row' id='" . $row['Id'] . "' style='border-bottom:none'><td>";
-            echo "<div class='col-md-5'><h4><a href='" . baseURL() . "/a/" . $row['Id'] . "'>" . $row['Title'] . "</a></h4></div>";
             echo "<div class='post'>";
             echo "<div class='postscore col-md-1'><h2 class='text-muted'>" . $row["Score"] . "</h2></div>";
-            echo "<div class='postbody col-md-4'><div class='text-muted lead'><p>" . $row["Body"] . "</p></div>";
+            echo "<div class='postbody col-md-4'><h4><a href='" . baseURL() . "/a/" . $row['Id'] . "'>" . $row['Title'] . "</a></h4><div class='text-muted lead'><p>" . $row["Body"] . "</p></div>";
             echo "<p><span style='background-color:#f6f6d6'>" . $row["reason"] . "</span></p></div>";
             echo "</div>";
             echo "<div class='actions ". $row['Id'] . "' style='border-top:none'>";
