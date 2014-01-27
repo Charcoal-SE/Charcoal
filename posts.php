@@ -41,7 +41,7 @@
             echo "<tr class='post-row' id='" . $row['Id'] . "'><td>";
 
             echo "<div class='post'>";
-            echo "<div class='postscore col-md-1'><strong>" . $row["Score"] . "</strong></div>";
+            echo "<div class='postscore col-md-1'><h1>" . $row["Score"] . "</h1></div>";
             echo "<a href='http://" . $_SESSION['RootURL'] . "/a/" . $row["Id"] . "' target='_newtab'><h4 class='post-title " . $row["Id"] . "'>" . $row["Body"] . " </a><span class='small'> - <strong>user" . $row["OwnerUserId"] ."</strong> " . TimeElapsed($row["CreationDate"]) . " <span class='text-danger'>(" . $row["reason"] . ")</span></span></h4>";
             echo "</div>";
             echo "</br>";
