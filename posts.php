@@ -30,7 +30,7 @@
   {  
   ?>
   <?php echo NavBar($_SESSION["Site"]); ?>
-  
+  <div class="col-md-offset-1 col-md-10">
   <h2>Posts</h2>
     
       <table class="table main-table">
