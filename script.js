@@ -180,6 +180,7 @@ $(document).ready(function() {
 		var tableRow = "tr#" + commentId.toString();
 		// alert(tableRow);
 		var argString = "id=" + commentId;
+		if (currentPage=='posts') argString = argString + "&isPost=1"
 		$.ajax({
 			type: "POST",
 			url: baseURL+"/submitInvalid.php",
