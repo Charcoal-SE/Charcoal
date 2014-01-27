@@ -42,7 +42,7 @@
 
             echo "<div class='post col-md-12'>";
             echo "<div class='postscore col-md-1'><h2>" . $row["Score"] . "</h2></div>";
-            echo "<div class='postbody col-md-6'><p>" . $row["Body"] . "</p></div>";
+            echo "<div class='postbody col-md-6 lead'><p>" . $row["Body"] . "</p></div>";
             echo "</div>";
             echo "<div class='actions " . $row["Id"] . "'>";
             echo "<div class='btn btn-success valid-button' id='" . $row["Id"] . "' data-postid='".$row["Id"]."'  ><strong>valid</strong></div>";
