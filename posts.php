@@ -35,13 +35,13 @@
     
       <table class="table main-table">
         <?php
-          $query = mysql_query("SELECT `Text`, `UserID`, `Id`, `PostId`, `CreationDate`, `reason` FROM flags WHERE site='" . $_SESSION["Site"] . "' AND handled=0 ORDER BY LENGTH(`Text`) LIMIT 0,25");
+          $query = mysql_query("SELECT `Score`, `Body`, `OwnerUserId`, `Id`, `CreationDate`, `reason` FROM postflags WHERE site='" . $_SESSION["Site"] . "' AND handled=0 ORDER BY LENGTH(`Body`) LIMIT 0,25");
           while ($row = mysql_fetch_array($query))
           {
-            echo "<tr class='comment-row' id='" . $row['Id'] . "'><td>";
+            echo "<tr class='post-row' id='" . $row['Id'] . "'><td>";
 
-            echo "<div class='comment'>";
-            echo "<a href='http://" . $_SESSION['RootURL'] . "/posts/comments/" . $row["Id"] . "' target='_newtab'><h4 class='comment-text " . $row["Id"] . "'>" . $row["Text"] . " </a><span class='small'> - <strong>user" . $row["UserID"] ."</strong> " . TimeElapsed($row["CreationDate"]) . " <span class='text-danger'>(" . $row["reason"] . ")</span></span></h4>";
+            echo "<div class='post'>";
+            echo "<a href='http://" . $_SESSION['RootURL'] . "/a/" . $row["Id"] . "' target='_newtab'><h4 class='post-title " . $row["Id"] . "'>" . $row["Body"] . " </a><span class='small'> - <strong>user" . $row["OwnerUserId"] ."</strong> " . TimeElapsed($row["CreationDate"]) . " <span class='text-danger'>(" . $row["reason"] . ")</span></span></h4>";
             echo "</div>";
             echo "</br>";
             echo "<p class='showcontextlink text-info' href='#' id='" . $row["Id"] . "' postid='" . $row["PostId"] . "'> show context</p></br>";
