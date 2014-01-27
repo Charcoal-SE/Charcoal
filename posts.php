@@ -47,6 +47,7 @@
             echo "</div>";
             echo "<div class='actions ". $row['Id'] . "' style='border-top:none'>";
             echo "<span class='text-muted'>" . TimeElapsed($row['CreationDate']) . "</span>";
+            echo "<br>";
             echo "<a href='http://" . $_SESSION['RootURL'] . "/users/" . $row['OwnerUserId'] . "/'><img src='http://" . $_SESSION['RootURL'] . "/users/flair/" . $row['OwnerUserId'] . ".png' width='208' height='58'></a>";
             echo "<br><br>";
             echo "<div class='btn btn-success valid-button col-md-offset-1' id='" . $row["Id"] . "' data-postid='".$row["Id"]."'  ><strong>valid</strong></div>";
