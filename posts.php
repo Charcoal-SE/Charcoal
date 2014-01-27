@@ -48,7 +48,7 @@
             echo "<div class='actions col-md-offset-5 ". $row['Id'] . "' style='border-top:none'>";
             echo "<span class='text-muted'>" . TimeElapsed($row['CreationDate']) . "</span>";
             echo "<br>";
-            echo "<a href='http://" . $_SESSION['RootURL'] . "/users/" . $row['OwnerUserId'] . "/'><img src='http://" . $_SESSION['RootURL'] . "/users/flair/" . $row['OwnerUserId'] . ".png?theme=clean' width='208' height='58'></a>";
+            echo "<a href='http://" . $_SESSION['RootURL'] . "/users/" . $row['OwnerUserId'] . "/'><img style='border:1px solid lightgrey' src='http://" . $_SESSION['RootURL'] . "/users/flair/" . $row['OwnerUserId'] . ".png?theme=clean' width='208' height='58'></a>";
             echo "<br><br>";
             echo "<div class='btn btn-success valid-button' id='" . $row["Id"] . "' data-postid='".$row["Id"]."'  ><strong>valid</strong></div>";
             echo "<div class='btn btn-danger invalid-button' id='" . $row["Id"] . "' data-postid='".$row["Id"]."' style='margin-left:10px'><strong>invalid</strong></div>";
