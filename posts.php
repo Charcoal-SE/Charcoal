@@ -47,6 +47,7 @@
             echo "</div>";
             echo "<div class='actions ". $row['Id'] . "' style='border-top:none'>";
             echo "<a href='http://" . $_SESSION['RootURL'] . "/users/" . $row['OwnerUserId'] . "/'><img src='http://" . $_SESSION['RootURL'] . "/users/flair/" . $row['OwnerUserId'] . ".png' width='208' height='58'></a>";
+            echo "<br><br>";
             echo "<div class='btn btn-success valid-button col-md-offset-1' id='" . $row["Id"] . "' data-postid='".$row["Id"]."'  ><strong>valid</strong></div>";
             echo "<div class='btn btn-danger invalid-button' id='" . $row["Id"] . "' data-postid='".$row["Id"]."' style='margin-left:10px'><strong>invalid</strong></div>";
             echo "</div>";
