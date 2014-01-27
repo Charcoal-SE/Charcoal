@@ -114,7 +114,7 @@
 	}
 	function FlagsForSite($site)
 	{
-		$query = mysql_query("SELECT COUNT(*) FROM flags WHERE handled=0 AND LENGTH(`Text`)<40 and site='" . $site . "'");
+		$query = mysql_query("SELECT COUNT(*) FROM flags WHERE handled=0 and site='" . $site . "'");
 	      while ($row = mysql_fetch_array($query)) {
 	        return $row['COUNT(*)'];
 	      }
