@@ -42,7 +42,7 @@
 
             echo "<div class='post'>";
             echo "<div class='postscore col-md-1'><h2 class='text-muted'>" . $row["Score"] . "</h2></div>";
-            echo "<div class='postbody col-md-4'><p class='text-muted' style='font-size:18px'>" . $row["Body"] . "</p>";
+            echo "<div class='postbody col-md-4'><div class='text-muted lead><p>" . $row["Body"] . "</p></div>";
             echo "<p class='text-danger'>" . $row["reason"] . "</p></div>";
             echo "</div>";
             echo "<div class='actions ". $row['Id'] . "' style='border-top:none'>";
