@@ -114,7 +114,7 @@ $(document).ready(function() {
 		
 		var argString = "id=" + commentId;
 		
-		if (currentPage=='posts') argString = argString + "isPost=1"
+		if (currentPage=='posts') argString = argString + "&isPost=1"
 
 		$.ajax({
 			type: "POST",
