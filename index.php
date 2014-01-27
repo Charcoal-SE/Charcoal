@@ -17,6 +17,7 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
     <script type="text/javascript">var baseURL="<?php echo baseURL();?>"</script>
+    <script type="text/javascript">var curentPage="comments"</script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
