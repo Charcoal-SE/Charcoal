@@ -253,7 +253,7 @@ else
       <div class="col-md-4">
         <div class="thumbnail">
           <div class="caption">
-            <h2>hundreds</h2>
+            <h2>thousands</h2>
             <p class="text-muted">of helpful flags generated</p>
           </div>
         </div>
