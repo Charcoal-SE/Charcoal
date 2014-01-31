@@ -10,9 +10,9 @@
   {
     $_SESSION["Filter"] = 'all';
   }
-  if ($_GET["Filter"])
+  if ($_GET["filter"])
   {
-    $_SESSION['Filter'] = $_GET['Filter'];
+    $_SESSION['Filter'] = $_GET['filter'];
   }
 ?>
 <!DOCTYPE html>
@@ -122,7 +122,7 @@
             $query = mysql_query("select reason from flags where site='" . $_SESSION["Site"] . "' group by reason");
             while ($row = mysql_fetch_array($query))
             {
-              echo '<li role="presentation" class="' . (($_SESSION["Filter"] == $row["reason"]) ? 'active' : '') . '"><a role="menuitem" tabindex="-1" href="' . baseURL() . '/index.php?Filter=' . $row["reason"] . '"">' . $row["reason"] . '</a></li>';
+              echo '<li role="presentation" class="' . (($_SESSION["Filter"] == $row["reason"]) ? 'active' : '') . '"><a role="menuitem" tabindex="-1" href="' . baseURL() . '/index.php?filter=' . $row["reason"] . '"">' . $row["reason"] . '</a></li>';
             }
           ?>
         </ul>
