@@ -31,9 +31,8 @@
 }
 	function NavBar($currentPage)
 	{
-		$query = mysql_query("SELECT * FROM sites");
 		$items = '';
-		while ($row = mysql_fetch_array($query)) {
+		foreach (PDODatabaseObject()->query('SELECT * FROM sites') as $row) {
 			$active = '';
 			if ($row["siteTableName"] == $currentPage)
 			{
@@ -42,17 +41,6 @@
 			}
         	$items = $items . "<li" . $active . "><a href='" . baseURL() . "/index.php?site=" . $row["siteTableName"] . "'>" . $row["siteName"] . " <strong>" . FlagsForSite($row["siteTableName"]) . "</strong></a></li>"; 
         }
-
-		// if ($currentPage == "stackoverflow")
-		// {
-		// 	$items = "<li class='active'><a href='http://www.erwaysoftware.com/charcoal/index.php?site=stackoverflow'>Stack Overflow <strong>" . FlagsForSite('stackoverflow') . "</strong></a></li>
-		//           <li><a href='http://www.erwaysoftware.com/charcoal/index.php?site=physics'>Physics <strong>" . FlagsForSite('physics') . "</strong></a></li>";
-		// }
-		// else if ($currentPage == "physics")
-		// {
-		// 	$items = "<li><a href='http://www.erwaysoftware.com/charcoal/index.php?site=stackoverflow'>Stack Overflow <strong>" . FlagsForSite('stackoverflow') . "</strong></a></li>
-		//           <li class='active'><a href='http://www.erwaysoftware.com/charcoal/index.php?site=physics'>Physics <strong>" . FlagsForSite('physics') . "</strong></a></li>";
-		// }
 
         if (isDev() == false)
         {
@@ -143,7 +131,7 @@
 		$dbname = MySQLDB(); // the name of the database that you are going to use for this project  
 		$dbuser = MySQLUsername(); // the username that you created, or were given, to access your database  
 		$dbpass = MySQLPassword(); // the password that you created, or were given, to access your database
-		
+
 		return new PDO('mysql:host=' . $dbhost . ';dbname=' . $dbname . ';charset=utf8', $dbuser, $dbpass);
 	}
 	
