@@ -152,7 +152,7 @@
          <tr class="reload-comments-button">
              <td>
              	 </br>
-                 <p class="text-info reload-flags-button" style="text-alignment:center; margin:auto" href='#'>reload flags</p>
+                 <p class="reload-flags-button text-info" style="text-alignment:center; margin:auto" href='#'>reload flags</p>
                  <!--<button type="reload-flags-button" class="btn btn-default btn-xs" id="invalidtoggle">reload flags</button> -->
              </td>
          </tr>
