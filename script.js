@@ -303,7 +303,7 @@ $(document).ready(function() {
 		$('#flagjscode').html(txt);
 		commentCollector.updateCommentCollector();
 	})
-	$('h3 .reload-flags-button').click(function(){
+	$('.reload-flags-button').click(function(){
 			// alert("Hi!");
 		$(this).html('<strong>working...</strong');
 		// var contextLink = $(this);
