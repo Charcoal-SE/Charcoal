@@ -153,7 +153,6 @@
              <td>
              	 </br>
                  <p class="reload-flags-button text-info" style="text-alignment:center; margin:auto" href='#'>reload flags</p>
-                 <!--<button type="reload-flags-button" class="btn btn-default btn-xs" id="invalidtoggle">reload flags</button> -->
              </td>
          </tr>
       </table>
