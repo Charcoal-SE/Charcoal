@@ -118,7 +118,7 @@
         <a data-toggle="dropdown" href="#"><h5>filter <span class="caret"></span></h5></a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
           <?php
-            echo '<li role="presentation" class="' . (($_SESSION["Filter"] == "all") ? 'active' : '') . '"><a role="menuitem" tabindex="-1" href="' . baseURL() . '/index.php?Filter=all">all</a></li>';
+            echo '<li role="presentation" class="' . (($_SESSION["Filter"] == "all") ? 'active' : '') . '"><a role="menuitem" tabindex="-1" href="' . baseURL() . '/index.php?filter=all">all</a></li>';
             $query = mysql_query("select reason from flags where site='" . $_SESSION["Site"] . "' group by reason");
             while ($row = mysql_fetch_array($query))
             {
