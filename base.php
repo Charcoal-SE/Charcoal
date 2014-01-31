@@ -103,15 +103,19 @@
 	}
 	function FlagsForSite($site)
 	{
-		$query = mysql_query("SELECT COUNT(*) FROM flags WHERE handled=0 and site='" . $site . "'");
-	      while ($row = mysql_fetch_array($query)) {
-	        return $row['COUNT(*)'];
-	      }
+   	  $stmt = PDODatabaseObject()->prepare("SELECT COUNT(*) FROM flags WHERE handled=0 and site=?");
+	  $stmt->execute(array($site));
+	  $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      foreach ($rows as $row) {
+        return $row['COUNT(*)'];
+      }
 	}
 	function RootURLForSite($site)
 	{
-		$query = mysql_query("SELECT siteRootURL FROM sites WHERE siteTableName='" . $site . "'");
-		while ($row = mysql_fetch_array($query)) {
+		$stmt = PDODatabaseObject()->prepare("SELECT siteRootURL FROM sites WHERE siteTableName=?");
+	    $stmt->execute(array($site));
+	    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		foreach ($rows as $row) {
 		    return $row['siteRootURL'];
 	    }
 	}
