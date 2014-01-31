@@ -81,6 +81,7 @@
 	{
 		$modmenu='';
 	}
+
 	$username = '<li><a href="' . baseURL() . '/viewuser.php?id=' . $_SESSION['UserID'] . '"><strong>' . (($_SESSION['ischarcoalmod']==1) ? $_SESSION["Username"] . ' &diams;' : (($_SESSION['isnetworkmod']==1) ? $_SESSION['Username'] . " &#9826;" : $_SESSION['Username'])) . '</strong></a></li>';
 	$returnValue = "<nav class='navbar navbar-default' role='navigation'>
 		  <!-- Brand and toggle get grouped for better mobile display -->

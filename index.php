@@ -6,6 +6,14 @@
     $_SESSION["Site"] = $site;
     $_SESSION["RootURL"] = RootURLForSite($site);
   }
+  if (strlen($_SESSION["Filter"])<1)
+  {
+    $_SESSION["Filter"] = 'all';
+  }
+  if ($_GET["Filter"])
+  {
+    $_SESSION['Filter'] = $_GET['Filter'];
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,7 +41,7 @@
   <?php echo NavBar($_SESSION["Site"]); ?>
 
     <div class="col-md-offset-1 col-md-10">
-    
+
     <div class="commentcollector-options">
 <div class=btn-group>
 	<button class="btn btn-default togglebtn  active" id='collecttoggle' id="commentcollector-enable">Collect comment/post IDs for flagging</button>  
@@ -105,9 +113,24 @@
 <br><br>
 
 </div>
+   
+      <div class="dropdown">
+        <a data-toggle="dropdown" href="#"><h5>filter <span class="caret"></span></h5></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <?php
+            echo '<li role="presentation" class="' . (($_SESSION["Filter"] == "all") ? 'active' : '') . '"><a role="menuitem" tabindex="-1" href="' . baseURL() . '/index.php?Filter=all">all</a></li>';
+            $query = mysql_query("select reason from flags where site='" . $_SESSION["Site"] . "' group by reason");
+            while ($row = mysql_fetch_array($query))
+            {
+              echo '<li role="presentation" class="' . (($_SESSION["Filter"] == $row["reason"]) ? 'active' : '') . '"><a role="menuitem" tabindex="-1" href="' . baseURL() . '/index.php?Filter=' . $row["reason"] . '"">' . $row["reason"] . '</a></li>';
+            }
+          ?>
+        </ul>
+      </div>
+
       <table class="table main-table">
         <?php
-          $query = mysql_query("SELECT `Text`, `UserID`, `Id`, `PostId`, `CreationDate`, `reason` FROM flags WHERE site='" . $_SESSION["Site"] . "' AND handled=0 ORDER BY LENGTH(`Text`) LIMIT 0,25");
+          $query = mysql_query("SELECT `Text`, `UserID`, `Id`, `PostId`, `CreationDate`, `reason` FROM flags WHERE site='" . $_SESSION["Site"] . "' AND handled=0 " . (($_SESSION["Filter"] != 'all') ? ('AND reason="' . $_SESSION["Filter"] . '"') : '') . "ORDER BY LENGTH(`Text`) LIMIT 0,25");
           while ($row = mysql_fetch_array($query))
           {
             echo "<tr class='comment-row' id='" . $row['Id'] . "'><td>";
