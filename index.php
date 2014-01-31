@@ -119,7 +119,7 @@
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
           <?php
             echo '<li role="presentation" class="' . (($_SESSION["Filter"] == "all") ? 'active' : '') . '"><a role="menuitem" tabindex="-1" href="' . baseURL() . '/index.php?filter=all">all</a></li>';
-            $query = mysql_query("select reason from flags where site='" . $_SESSION["Site"] . "' group by reason");
+            $query = mysql_query("select reason from flags where site='" . $_SESSION["Site"] . "' and handled=0 group by reason");
             while ($row = mysql_fetch_array($query))
             {
               echo '<li role="presentation" class="' . (($_SESSION["Filter"] == $row["reason"]) ? 'active' : '') . '"><a role="menuitem" tabindex="-1" href="' . baseURL() . '/index.php?filter=' . $row["reason"] . '"">' . $row["reason"] . '</a></li>';
