@@ -37,6 +37,10 @@
   <?php  
   if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Username']))  
   {  
+  	
+ if ($_SESSION["ischarcoalmod"]==0){
+		die("Sorry, Charcoal is locked down at the moment");
+	}
   ?>
   <?php echo NavBar($_SESSION["Site"]); ?>
 
