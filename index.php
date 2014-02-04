@@ -39,7 +39,7 @@
   {  
   	
  if ($_SESSION["ischarcoalmod"]==0){
-		die("Sorry, Charcoal is locked down at the moment");
+		die("Sorry, Charcoal is locked down at the moment. Please ask in  <a href='http://chat.stackexchange.com/rooms/11540/charcoal-hq'>Charcoal HQ</a> for details.");
 	}
   ?>
   <?php echo NavBar($_SESSION["Site"]); ?>
