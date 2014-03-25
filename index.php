@@ -37,6 +37,10 @@
   <?php  
   if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Username']))  
   {  
+  	
+ if ($_SESSION["ischarcoalmod"]==0){
+		die("Sorry, Charcoal is locked down at the moment. Please ask in  <a href='http://chat.stackexchange.com/rooms/11540/charcoal-hq'>Charcoal HQ</a> for details.");
+	}
   ?>
   <?php echo NavBar($_SESSION["Site"]); ?>
 
@@ -152,7 +156,7 @@
          <tr class="reload-comments-button">
              <td>
              	 </br>
-                 <p class="text-info reload-flags-button" style="text-alignment:center; margin:auto">reload flags</p>
+                 <p class="reload-flags-button text-info" style="text-alignment:center; margin:auto" href='#'>reload flags</p>
              </td>
          </tr>
       </table>
