@@ -62,7 +62,7 @@
             $totalhandled = 0;
             foreach(PDODatabaseObject()->query("SELECT * FROM sites") as $row1) {
                  $today = PDODatabaseObject()->prepare("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND handledBy = ? AND site = ?");
-                 $today->execute(array($userid, $row["siteTableName"]));
+                 $today->execute(array($row["id"], $row1["siteTableName"]));
                  $numhandled = $today->fetchColumn();
                  $totalhandled = $numhandled + $totalhandled;
              }

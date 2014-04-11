@@ -36,7 +36,7 @@
         $userid = $_REQUEST['id'];  
         $query = PDODatabaseObject()->prepare("SELECT * FROM users WHERE id = ?");
         $query->execute(array($userid));
-        $user = $query->fetchAll();
+        $user = $query->fetch();
         $username = (($user['ischarcoalmod']==1) ? $user["username"] . ' <small>&diams; charcoal moderator</small>' : (($user['isnetworkmod']==1) ? $user['username'] . " <small>&#9826; SE moderator</small>" : $user['username']));
         echo '<h2>' . $username . '</h2>';
         echo "<hr>";
