@@ -176,13 +176,15 @@ elseif(!empty($_POST['username']) && !empty($_POST['password']))
     $password = md5(mysql_real_escape_string($_POST['password']));  
       
     //$checklogin = mysql_query("SELECT * FROM users WHERE username = '".$username."' AND password = '".$password."'");  
-    $checklogin = PDODatabaseObject()->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
+    $checklogin = PDODatabaseObject()->prepare("SELECT COUNT(*) FROM users WHERE username = ? AND password = ?");
     $checklogin->execute(array($username, $password));
       
     $success = 1;
       
-    if($checklogin->rowCount() == 1) {  
-        $row = $checklogin->fetchAll();   
+    if($checklogin->fetchColumn() == 1) { 
+        $login = PDODatabaseObject()->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
+        $login->execute(array($username, $password));
+        $row = $login->fetchAll();   
         $userID = $row['id'];
           
         $_SESSION['Username'] = $username;  
@@ -244,7 +246,7 @@ else
           <div class="caption">
             <h2>
               <?php
-                $count = PDODatabaseObject()->query("SELECT * FROM flags WHERE handled=1")->fetchColumn(); 
+                $count = PDODatabaseObject()->query("SELECT COUNT(*) FROM flags WHERE handled=1")->fetchColumn(); 
                 echo $count;
               ?>
             </h2>
