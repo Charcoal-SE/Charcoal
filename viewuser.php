@@ -55,7 +55,7 @@
             $numtoday = $today->fetchColumn();
             $totalhandled = $numhandled + $totalhandled;
             $handledtoday = $numtoday + $handledtoday;
-            echo "<span class='small'><strong> " . $numhandled . " </strong> flags handled on " . $row1["siteTableName"]
+            echo "<span class='small'><strong> " . $numhandled . " </strong> flags handled on " . $row["siteTableName"]
               . " </span>";
             echo "</br>";
         }
