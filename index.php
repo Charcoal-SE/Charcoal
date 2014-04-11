@@ -184,7 +184,7 @@ elseif(!empty($_POST['username']) && !empty($_POST['password']))
     if($checklogin->fetchColumn() == 1) { 
         $login = PDODatabaseObject()->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
         $login->execute(array($username, $password));
-        $row = $login->fetchAll();   
+        $row = $login->fetch();   
         $userID = $row['id'];
           
         $_SESSION['Username'] = $username;  
