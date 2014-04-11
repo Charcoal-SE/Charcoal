@@ -34,9 +34,10 @@
     <div class="col-md-offset-1 col-md-10">
     <table class="table main-table">
         <?php
-          $query = mysql_query("SELECT `Text`, `UserID`, `Id`, `PostId`, `CreationDate`, `reason` FROM flags WHERE handled=0 AND site='" . $_SESSION["Site"] . "' ORDER BY LENGTH(`Text`) LIMIT 0,25");
-          while ($row = mysql_fetch_array($query))
-          {
+          $query = PDODatabaseObject()->prepare("SELECT `Text`, `UserID`, `Id`, `PostId`, `CreationDate`, `reason` FROM flags WHERE handled=0 AND site = ? ORDER BY LENGTH(`Text`) LIMIT 0,25");
+          $query->execute(array($_SESSION["Site"]));
+          $flags = $query->fetchAll();
+          foreach($flags as $row) {
             echo "<tr class='comment-row' id='" . $row['Id'] . "'><td>";
 
             echo "<div class='comment'>";
@@ -51,7 +52,6 @@
 
             echo "</td></tr>";
           }
-          
           ?>
       </table>
     </div>
@@ -66,7 +66,5 @@ else
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../js/bootstrap.min.js"></script>
-    
-
   </body>
 </html>

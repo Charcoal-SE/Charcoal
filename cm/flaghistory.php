@@ -31,18 +31,17 @@
     <button type="button" class="btn btn-default btn-xs togglebtn" id="invalidtoggle">Show only Invalids</button>  
     <table class="table main-table">
         <?php
-            $query = mysql_query("SELECT * FROM flags s left join users u  on s.handledBy=u.id WHERE s.handled=1 AND s.site='" . $_SESSION["Site"] . "' order by s.handleDate desc LIMIT 100");
-            //$query = mysql_query("SELECT * FROM " . $_SESSION["Site"] . " WHERE handled=1 order by handleDate desc LIMIT 100");
-            while ($row = mysql_fetch_array($query))
-            {//print_r($row);
+          $flags = PDODatabaseObject()->prepare("SELECT * FROM flags s left join users u on s.handledBy=u.id WHERE s.handled=1 AND s.site=? order by s.handleDate desc LIMIT 100");
+          $flags->execute(array($_SESSION["Site"]));  
+          $handledflags = $flags->fetchAll();
+          foreach($handledflags as $row) {
             echo "<tr class='date-row' id='" . $row['handleDate'] . "'><td>";
             echo "<div class='comment'>";
             echo "<span class='text-primary'><h4 class='site-text text-info" . $row["Text"] .  "'>" . $row["Text"] . " </a></h4></span><span class='text-muted'>marked <strong>" . (($row["wasValid"]==1) ? "<span class='text-success'>valid</span>" : "<span class='text-danger'>invalid</span>") . "</strong> by <span class='text-primary'><strong><a href='" . baseURL() . "/viewuser.php?id=" . $row["id"] . "'>" . (($row['ischarcoalmod'] == 1) ? $row["username"] . " &diams;" : (($row['isnetworkmod']==1) ? $row["username"] . " &#9826;" : $row['username'])) . "</a></strong></span>" . " <span class='text-muted'>" . (($row['handleDate']==NULL) ? "" : TimeElapsed($row["handleDate"])) . "</span></span>";
             echo "</div>";
             echo "</td></tr>";
           }
-          
-          ?>
+        ?>
       </table>
     </div>
 <?php
@@ -56,7 +55,5 @@ else
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../js/bootstrap.min.js"></script>
-    
-
   </body>
 </html>

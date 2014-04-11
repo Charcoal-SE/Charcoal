@@ -38,7 +38,7 @@
   if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Username']))  
   {  
   	
- if ($_SESSION["ischarcoalmod"]==0){
+  if ($_SESSION["ischarcoalmod"]==0){
 		die("Sorry, Charcoal is locked down at the moment. Please ask in  <a href='http://chat.stackexchange.com/rooms/11540/charcoal-hq'>Charcoal HQ</a> for details.");
 	}
   ?>
@@ -123,9 +123,10 @@
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
           <?php
             echo '<li role="presentation" class="' . (($_SESSION["Filter"] == "all") ? 'active' : '') . '"><a role="menuitem" tabindex="-1" href="' . baseURL() . '/index.php?filter=all">all</a></li>';
-            $query = mysql_query("select reason from flags where site='" . $_SESSION["Site"] . "' and handled=0 group by reason");
-            while ($row = mysql_fetch_array($query))
-            {
+            $query = PDODatabaseObject()->prepare("SELECT reason FROM flags WHERE site = ? AND handled=0 GROUP BY reason");
+            $query->execute(array($_SESSION["Site"]));
+            $reasons = $query->fetchAll();
+            foreach($reasons as $row) {
               echo '<li role="presentation" class="' . (($_SESSION["Filter"] == $row["reason"]) ? 'active' : '') . '"><a role="menuitem" tabindex="-1" href="' . baseURL() . '/index.php?filter=' . $row["reason"] . '"">' . $row["reason"] . '</a></li>';
             }
           ?>
@@ -134,9 +135,16 @@
 
       <table class="table main-table">
         <?php
-          $query = mysql_query("SELECT `Text`, `UserID`, `Id`, `PostId`, `CreationDate`, `reason` FROM flags WHERE site='" . $_SESSION["Site"] . "' AND handled=0 " . (($_SESSION["Filter"] != 'all') ? ('AND reason="' . $_SESSION["Filter"] . '"') : '') . "ORDER BY LENGTH(`Text`) LIMIT 0,25");
-          while ($row = mysql_fetch_array($query))
-          {
+          if($_SESSION["Filter"] != "all"){
+            $getFlags = PDODatabaseObject()->prepare("SELECT `Text`, `UserID`, `Id`, `PostId`, `CreationDate`, `reason` FROM flags WHERE site=? AND handled=0 AND reason=? ORDER BY LENGTH(`Text`) LIMIT 0,25");
+            $getFlags->execute(array($_SESSION["Site"], $_SESSION["Filter"]));
+          }
+          else{
+            $getFlags = PDODatabaseObject()->prepare("SELECT `Text`, `UserID`, `Id`, `PostId`, `CreationDate`, `reason` FROM flags WHERE site=? AND handled=0 ORDER BY LENGTH(`Text`) LIMIT 0,25");
+            $getFlags->execute(array($_SESSION["Site"]));
+          }
+          $flags = $getFlags->fetchAll();
+          foreach($flags as $row) {
             echo "<tr class='comment-row' id='" . $row['Id'] . "'><td>";
 
             echo "<div class='comment'>";
@@ -151,7 +159,6 @@
 
             echo "</td></tr>";
           }
-          
           ?>
          <tr class="reload-comments-button">
              <td>
@@ -168,13 +175,14 @@ elseif(!empty($_POST['username']) && !empty($_POST['password']))
     $username = mysql_real_escape_string($_POST['username']);  
     $password = md5(mysql_real_escape_string($_POST['password']));  
       
-    $checklogin = mysql_query("SELECT * FROM users WHERE username = '".$username."' AND password = '".$password."'");  
+    //$checklogin = mysql_query("SELECT * FROM users WHERE username = '".$username."' AND password = '".$password."'");  
+    $checklogin = PDODatabaseObject()->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
+    $checklogin->execute(array($username, $password));
       
     $success = 1;
       
-    if(mysql_num_rows($checklogin) == 1)  
-    {  
-        $row = mysql_fetch_array($checklogin);   
+    if($checklogin->rowCount() == 1) {  
+        $row = $checklogin->fetchAll();   
         $userID = $row['id'];
           
         $_SESSION['Username'] = $username;  
@@ -188,7 +196,7 @@ elseif(!empty($_POST['username']) && !empty($_POST['password']))
           
         echo "<h1>Logged in</h1>";  
 //         echo "isadmin: " . $isadmin;
-     $success = 0;
+        $success = 0;
     }  
     
     if ($success == 1) echo "<script>this.document.location.href = '".baseURL()."/index.php?loginsuccess=1'</script>";
@@ -236,9 +244,7 @@ else
           <div class="caption">
             <h2>
               <?php
-                $count = 0;
-                $aQuery = mysql_query("SELECT * FROM flags WHERE handled=1");
-                $count = mysql_num_rows($aQuery);
+                $count = PDODatabaseObject()->query("SELECT * FROM flags WHERE handled=1")->fetchColumn(); 
                 echo $count;
               ?>
             </h2>
@@ -251,7 +257,6 @@ else
           <div class="caption">
             <h2>
               <?php
-
                 function calculate_average($arr) {
                     $acount = count($arr); //total numbers in array
                     foreach ($arr as $value) {
@@ -261,14 +266,8 @@ else
                     return $average;
                 }
 
-                  $count = array();
-                  $aQuery = mysql_query("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND wasValid=1");
-                  $bQuery = mysql_query("SELECT COUNT(*) AS number FROM flags WHERE handled=1");
-                  // $count = $count + mysql_num_rows($aQuery);
-                  $valid = mysql_fetch_assoc($aQuery);
-                  $handled = mysql_fetch_assoc($bQuery);
-                  $totalvalid = $valid["number"];
-                  $totalhandled = $handled["number"];
+                $totalvalid = PDODatabaseObject()->query("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND wasValid=1")->fetchColumn();
+                $totalhandled = PDODatabaseObject()->query("SELECT COUNT(*) FROM flags WHERE handled=1")->fetchColumn();
 
                 echo (($totalvalid / $totalhandled) * 100) . " %";
               ?>

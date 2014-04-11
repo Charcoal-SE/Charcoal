@@ -33,34 +33,32 @@
 
     <div class="col-md-offset-1 col-md-10">
       <?php
-        $userid = $_REQUEST['id'];
-        $query = mysql_query("select * from users where id=" . $userid);
-        $user = mysql_fetch_array($query);
+        $userid = $_REQUEST['id'];  
+        $query = PDODatabaseObject()->prepare("SELECT * FROM users WHERE id = ?");
+        $query->execute(array($userid));
+        $user = $query->fetchAll();
         $username = (($user['ischarcoalmod']==1) ? $user["username"] . ' <small>&diams; charcoal moderator</small>' : (($user['isnetworkmod']==1) ? $user['username'] . " <small>&#9826; SE moderator</small>" : $user['username']));
         echo '<h2>' . $username . '</h2>';
         echo "<hr>";
         $totalhandled = 0;
         $handledtoday = 0;
         $creationdate = $user["CreationDate"];
-        $sites = mysql_query("SELECT * FROM sites");
         echo "<span class='small'>Created on <strong> " . $creationdate . " </strong></span>";
         echo "</br>";
-        while ($row1 = mysql_fetch_array($sites))
-          {
-              $aQuery = mysql_query("SELECT COUNT(*) AS number FROM flags WHERE handled=1 
-              AND handledBy = " . $userid . " AND site='" . $row1["siteTableName"] . "'");
-              $bQuery = mysql_query("SELECT COUNT(*) AS number FROM flags WHERE handled=1 
-              AND handledBy = " . $userid . " AND DATE(handleDate) = CURDATE() AND site='" . $row1["siteTableName"] . "'");
-              $handled = mysql_fetch_assoc($aQuery);
-              $today = mysql_fetch_assoc($bQuery);
-              $numhandled = $handled["number"];
-              $numtoday = $today["number"];
-              $totalhandled = $numhandled + $totalhandled;
-              $handledtoday = $numtoday + $handledtoday;
-              echo "<span class='small'><strong> " . $numhandled . " </strong> flags handled on " . $row1["siteTableName"]
+        foreach(PDODatabaseObject()->query("SELECT * FROM sites") as $row) {
+            $total = PDODatabaseObject()->prepare("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND handledBy = ? AND site = ?");
+            $total->execute(array($userid, $row["siteTableName"]));
+            $today = PDODatabaseObject()->prepare("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND handledBy = ? AND
+              DATE(handleDate) = CURDATE() AND site = ?");
+            $today->execute(array($userid, $row["siteTableName"]));
+            $numhandled = $total->fetchColumn();
+            $numtoday = $today->fetchColumn();
+            $totalhandled = $numhandled + $totalhandled;
+            $handledtoday = $numtoday + $handledtoday;
+            echo "<span class='small'><strong> " . $numhandled . " </strong> flags handled on " . $row1["siteTableName"]
               . " </span>";
-              echo "</br>";
-          }
+            echo "</br>";
+        }
         echo "<span class='small'><strong> " . $totalhandled . " </strong> flags handled total</span>";
         echo "</br>";
         echo "<span class='small'><strong> " . $handledtoday . " </strong> flags handled today (UTC day)</span>"
@@ -74,7 +72,5 @@ else echo '<p>You\'re not logged in!';
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    
-
   </body>
 </html>

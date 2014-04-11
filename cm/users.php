@@ -58,16 +58,12 @@
       </div></div></div>
 
         <?php
-          $query = mysql_query("SELECT * FROM users ORDER BY id asc");
-          while ($row = mysql_fetch_array($query))
-          {
+          foreach(PDODatabaseObject()->query("SELECT * FROM users ORDER BY id asc") as $row) {
             $totalhandled = 0;
-            $sites = mysql_query("SELECT * FROM sites");
-            while ($row1 = mysql_fetch_array($sites))
-             {
-                $aQuery = mysql_query("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND handledBy = " . $row["id"] . " AND site='" . $row1["siteTableName"] . "'");
-                 $handled = mysql_fetch_assoc($aQuery);
-                 $numhandled = $handled["number"];
+            foreach(PDODatabaseObject()->query("SELECT * FROM sites") as $row1) {
+                 $today = PDODatabaseObject()->prepare("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND handledBy = ? AND site = ?");
+                 $today->execute(array($userid, $row["siteTableName"]));
+                 $numhandled = $today->fetchColumn();
                  $totalhandled = $numhandled + $totalhandled;
              }
             echo "<tr class='user-row' id='" . $row['id'] . "'><td>";
@@ -78,7 +74,6 @@
 
             echo "</td></tr>";
           }
-          
           ?>
       </table>
     </div>
@@ -94,7 +89,5 @@ else
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../js/bootstrap.min.js"></script>
-    
-
   </body>
 </html>

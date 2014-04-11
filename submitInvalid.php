@@ -1,8 +1,15 @@
 <?php
 	include "base.php";
 	$timestamp = date("Y:m:d H:i:s");
-	
-	mysql_query("UPDATE " . (($_POST['isPost']==1) ? "postflags" : "flags") . " SET handled=1, handleDate='$timestamp', wasValid=0, wasObsolete=0, handledBy=" . $_SESSION["UserID"] . " WHERE `Id`=" . $_POST['id']. " AND  `site`='" . $_SESSION["Site"] . "'");
+    
+    if($_POST['isPost'] == 1) {
+    	$invalid = PDODatabaseObject()->prepare("UPDATE postflags SET handled=1, handleDate=?, wasValid=0, wasObsolete=0, handledBy=? WHERE `Id`=? AND  `site`=?");
+    	$invalid->execute(array($timestamp, $_SESSION["UserID"], $_POST["id"], $_SESSION["Site"]));
+    }
+    else {
+    	$invalid = PDODatabaseObject()->prepare("UPDATE flags SET handled=1, handleDate=?, wasValid=0, wasObsolete=0, handledBy=? WHERE `Id`=? AND  `site`=?");
+    	$invalid->execute(array($timestamp, $_SESSION["UserID"], $_POST["id"], $_SESSION["Site"]));
+    }
 
 	echo "success";
 ?>

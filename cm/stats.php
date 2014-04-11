@@ -26,21 +26,20 @@
     <div class="col-md-offset-1 col-md-10">
     <table class="table main-table">
         <?php
-          $query = mysql_query("SELECT * FROM sites");
-          while ($row = mysql_fetch_array($query))
-          {
-            $aQuery = mysql_query("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND site='" . $row["siteTableName"] . "'");
-            $bQuery = mysql_query("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND DATE(handleDate) = CURDATE() AND site='" . $row["siteTableName"] . "'");
+          foreach(PDODatabaseObject()->query("SELECT * FROM sites") as $row) {
+            $total = PDODatabaseObject()->prepare("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND site = ?");
+            $total->execute(array($row["siteTableName"]));
+            $today = PDODatabaseObject()->prepare("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND DATE(handleDate) = CURDATE() AND site = ?");
+            $today->execute(array($row["siteTableName"]));
+            $handled = $total->fetchColumn();
+            $numtoday = $today->fetchColumn();
             echo "<tr class='site-row' id='" . $row['id'] . "'><td>";
             echo "<div class='comment'>";
-            $handled = mysql_fetch_assoc($aQuery);
-            $today = mysql_fetch_assoc($bQuery);
-            echo "<span><h4 class='site-text text-info" . $row["siteTableName"] .  "'>" . $row["siteName"] . " </a></h4><strong>" . $handled["number"] . "</strong> total flags handled</br> <strong>" . $today["number"] . "</strong> flags handled today";
+            echo "<span><h4 class='site-text text-info" . $row["siteTableName"] .  "'>" . $row["siteName"] . " </a></h4><strong>" . $handled . "</strong> total flags handled</br> <strong>" . $numtoday . "</strong> flags handled today";
             echo "</div>";
 
             echo "</td></tr>";
           }
-          
           ?>
       </table>
     </div>
@@ -55,7 +54,5 @@ else
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../js/bootstrap.min.js"></script>
-    
-
   </body>
 </html>

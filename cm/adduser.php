@@ -1,7 +1,6 @@
 <?php
 include '../base.php';
-  if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Username']) && $_SESSION["ischarcoalmod"]==1)  
-  {
+  if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Username']) && $_SESSION["ischarcoalmod"]==1) {
   	$username = $_REQUEST["username"];
   	$email = $_REQUEST["email"];
   	$isnetworkmod = $_REQUEST["isnetworkmod"];
@@ -17,16 +16,13 @@ include '../base.php';
 	  $m->setMessageFromString("You should now be able to login to http://erwaysoftware.com/charcoal with your SE username '" . $username . "' and the password '" . $password . "' Have fun!");
 	  $ses->sendEmail($m);
 
-  	$db = new PDO('mysql:host=' . MySQLHost() . ';dbname=' . MySQLDB() . ';charset=utf8', MySQLUsername(), MySQLPassword());
+	  $stmt = PDODatabaseObject()->prepare("INSERT INTO users(`username`,`password`,`email`,`isnetworkmod`) VALUES(:username,:password,:email,:isnetworkmod)");
+	  $stmt->execute(array(':username' => $username, ':password' => md5($password), ':email' => $email, ':isnetworkmod' => (($isnetworkmod=='on') ? '1' : '0')));
+	  $affected_rows = $stmt->rowCount();
 
-	$stmt = $db->prepare("INSERT INTO users(`username`,`password`,`email`,`isnetworkmod`) VALUES(:username,:password,:email,:isnetworkmod)");
-	$stmt->execute(array(':username' => $username, ':password' => md5($password), ':email' => $email, ':isnetworkmod' => (($isnetworkmod=='on') ? '1' : '0')));
-	$affected_rows = $stmt->rowCount();
-
-	echo 'User added.';
+	  echo 'User added.';
   }
-  else
-  {
+  else {
     echo 'You\'re not logged in!';
   }
 
