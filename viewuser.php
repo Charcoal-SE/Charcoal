@@ -45,11 +45,11 @@
         $creationdate = $user["CreationDate"];
         echo "<span class='small'>Created on <strong> " . $creationdate . " </strong></span>";
         echo "</br>";
+        $total = PDODatabaseObject()->prepare("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND handledBy = ? AND site = ?");
+        $today = PDODatabaseObject()->prepare("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND handledBy = ? AND
+          DATE(handleDate) = CURDATE() AND site = ?");
         foreach(PDODatabaseObject()->query("SELECT * FROM sites") as $row) {
-            $total = PDODatabaseObject()->prepare("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND handledBy = ? AND site = ?");
             $total->execute(array($userid, $row["siteTableName"]));
-            $today = PDODatabaseObject()->prepare("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND handledBy = ? AND
-              DATE(handleDate) = CURDATE() AND site = ?");
             $today->execute(array($userid, $row["siteTableName"]));
             $numhandled = $total->fetchColumn();
             $numtoday = $today->fetchColumn();

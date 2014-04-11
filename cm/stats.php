@@ -26,10 +26,10 @@
     <div class="col-md-offset-1 col-md-10">
     <table class="table main-table">
         <?php
+          $total = PDODatabaseObject()->prepare("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND site = ?");
+          $today = PDODatabaseObject()->prepare("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND DATE(handleDate) = CURDATE() AND site = ?");
           foreach(PDODatabaseObject()->query("SELECT * FROM sites") as $row) {
-            $total = PDODatabaseObject()->prepare("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND site = ?");
             $total->execute(array($row["siteTableName"]));
-            $today = PDODatabaseObject()->prepare("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND DATE(handleDate) = CURDATE() AND site = ?");
             $today->execute(array($row["siteTableName"]));
             $handled = $total->fetchColumn();
             $numtoday = $today->fetchColumn();
