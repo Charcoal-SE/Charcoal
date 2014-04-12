@@ -1,5 +1,4 @@
 <?php
-
 include "base.php";
  
 $url = 'https://api.stackexchange.com/2.1/posts/' . $_POST["id"] . '/comments';

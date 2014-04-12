@@ -1,5 +1,5 @@
-<?php include "../base.php"; ?>
 <?php 
+  include "../base.php";
   $site = $_GET["site"];
   if ($_GET["site"])
   {

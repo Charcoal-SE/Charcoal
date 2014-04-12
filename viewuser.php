@@ -40,8 +40,6 @@
         $username = (($user['ischarcoalmod']==1) ? $user["username"] . ' <small>&diams; charcoal moderator</small>' : (($user['isnetworkmod']==1) ? $user['username'] . " <small>&#9826; SE moderator</small>" : $user['username']));
         echo '<h2>' . $username . '</h2>';
         echo "<hr>";
-        $totalhandled = 0;
-        $handledtoday = 0;
         $creationdate = $user["CreationDate"];
         echo "<span class='small'>Created on <strong> " . $creationdate . " </strong></span>";
         echo "</br>";

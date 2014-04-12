@@ -60,7 +60,6 @@
         <?php
           $today = PDODatabaseObject()->prepare("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND handledBy = ? AND site = ?");
           foreach(PDODatabaseObject()->query("SELECT * FROM users ORDER BY id asc") as $row) {
-            $totalhandled = 0;
             foreach(PDODatabaseObject()->query("SELECT * FROM sites") as $row1) {
                  $today->execute(array($row["id"], $row1["siteTableName"]));
                  $numhandled = $today->fetchColumn();

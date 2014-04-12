@@ -1,5 +1,5 @@
-<?php include "base.php"; ?>
-<?php 
+<?php
+  include "base.php";
   $site = $_GET["site"];
   if ($_GET["site"])
   {
@@ -33,7 +33,6 @@
   <?php echo NavBar($_SESSION["Site"]); ?>
   <div class="col-md-offset-1 col-md-10">
   <h2>Posts</h2>
-    
       <table class="table main-table">
         <?php
           $query = PDODatabaseObject()->prepare("SELECT `Score`, `Body`, `OwnerUserId`, `Id`, `CreationDate`, `reason`, `Title` FROM postflags WHERE site=? AND handled=0 ORDER BY LENGTH(`Body`) LIMIT 0,25");
@@ -56,7 +55,6 @@
             echo "<div class='btn btn-danger invalid-button' id='" . $row["Id"] . "' data-postid='".$row["Id"]."' style='margin-left:10px'><strong>invalid</strong></div>";
             echo "</div>";
             echo "</td></tr>";
-            
           }
           ?>
          <tr class="reload-comments-button">
