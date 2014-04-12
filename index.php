@@ -1,5 +1,5 @@
-<?php include "base.php"; ?>
-<?php 
+<?php
+  include "base.php"; 
   $site = $_GET["site"];
   if ($_GET["site"])
   {
@@ -35,23 +35,19 @@
   </head>
   <body>
   <?php  
-  if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Username']))  
-  {  
-  	
-  if ($_SESSION["ischarcoalmod"]==0){
-		die("Sorry, Charcoal is locked down at the moment. Please ask in  <a href='http://chat.stackexchange.com/rooms/11540/charcoal-hq'>Charcoal HQ</a> for details.");
-	}
+  if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Username'])) {  
+    if ($_SESSION["ischarcoalmod"]==0) {
+		  die("Sorry, Charcoal is locked down at the moment. Please ask in  <a href='http://chat.stackexchange.com/rooms/11540/charcoal-hq'>Charcoal HQ</a> for details.");
+	  }
   ?>
   <?php echo NavBar($_SESSION["Site"]); ?>
-
-    <div class="col-md-offset-1 col-md-10">
-
+  <div class="col-md-offset-1 col-md-10">
     <div class="commentcollector-options">
-<div class=btn-group>
-	<button class="btn btn-default togglebtn  active" id='collecttoggle' id="commentcollector-enable">Collect comment/post IDs for flagging</button>  
-	<button class="btn btn-default" id="collecthelp" data-toggle="modal" data-target="#collectmodal">?</button>
-</div>	
-<div id="collectmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;"><div class="modal-dialog"><div class="modal-content">
+      <div class=btn-group>
+	      <button class="btn btn-default togglebtn  active" id='collecttoggle' id="commentcollector-enable">Collect comment/post IDs for flagging</button>  
+	      <button class="btn btn-default" id="collecthelp" data-toggle="modal" data-target="#collectmodal">?</button>
+      </div>	
+    <div id="collectmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;"><div class="modal-dialog"><div class="modal-content">
 		<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#215;</button>
 		<h3 id="myModalLabel">Comment collection system</h3>
@@ -162,16 +158,15 @@
           ?>
          <tr class="reload-comments-button">
              <td>
-             	 </br>
-                 <p class="reload-flags-button text-info" style="text-alignment:center; margin:auto" href='#'>reload flags</p>
+             	  </br>
+                <p class="reload-flags-button text-info" style="text-alignment:center; margin:auto" href='#'>reload flags</p>
              </td>
          </tr>
       </table>
     </div>
 <?php
 }  
-elseif(!empty($_POST['username']) && !empty($_POST['password']))  
-{  
+elseif(!empty($_POST['username']) && !empty($_POST['password'])) {  
     $username = mysql_real_escape_string($_POST['username']);  
     $password = md5(mysql_real_escape_string($_POST['password']));  
         
@@ -196,7 +191,6 @@ elseif(!empty($_POST['username']) && !empty($_POST['password']))
         $_SESSION["isnetworkmod"] = $row['isnetworkmod'];
           
         echo "<h1>Logged in</h1>";  
-//         echo "isadmin: " . $isadmin;
         $success = 0;
     }  
     
@@ -245,8 +239,7 @@ else
           <div class="caption">
             <h2>
               <?php
-                $count = PDODatabaseObject()->query("SELECT COUNT(*) FROM flags WHERE handled=1")->fetchColumn(); 
-                echo $count;
+                echo PDODatabaseObject()->query("SELECT COUNT(*) FROM flags WHERE handled=1")->fetchColumn(); 
               ?>
             </h2>
             <p class="text-muted">comments reviewed so far</p>
@@ -258,15 +251,6 @@ else
           <div class="caption">
             <h2>
               <?php
-                function calculate_average($arr) {
-                    $acount = count($arr); //total numbers in array
-                    foreach ($arr as $value) {
-                        $total = $total + $value; // total value of array numbers
-                    }
-                    $average = ($total/$acount); // get average value
-                    return $average;
-                }
-
                 $totalvalid = PDODatabaseObject()->query("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND wasValid=1")->fetchColumn();
                 $totalhandled = PDODatabaseObject()->query("SELECT COUNT(*) FROM flags WHERE handled=1")->fetchColumn();
 
@@ -294,7 +278,5 @@ else
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    
-
   </body>
 </html>
