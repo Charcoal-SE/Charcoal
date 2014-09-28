@@ -24,8 +24,6 @@
   <?php echo NavBar($_SESSION["Site"]); ?>
     </div>
     <div class="col-md-offset-1 col-md-10">
-    
-    
       <table class="table main-table">
       <tr class='warning' data-toggle="modal" data-target="#newusermodal"><td><h4 style="text-align:center"><a>Add user</a></h3></td></tr>
 
@@ -60,11 +58,12 @@
         <?php
           $today = PDODatabaseObject()->prepare("SELECT COUNT(*) AS number FROM flags WHERE handled=1 AND handledBy = ? AND site = ?");
           foreach(PDODatabaseObject()->query("SELECT * FROM users ORDER BY id asc") as $row) {
+            $totalhandled = 0;
             foreach(PDODatabaseObject()->query("SELECT * FROM sites") as $row1) {
                  $today->execute(array($row["id"], $row1["siteTableName"]));
                  $numhandled = $today->fetchColumn();
                  $totalhandled = $numhandled + $totalhandled;
-             }
+            }
             echo "<tr class='user-row' id='" . $row['id'] . "'><td>";
 
             echo "<div class='comment'>";
